@@ -1,0 +1,10 @@
+package com.spring.domain;
+
+public class BoardLike {
+	private long likeNum;
+	private long brdNum;
+	private String nickName;
+	
+	private boardLike(){}
+
+}

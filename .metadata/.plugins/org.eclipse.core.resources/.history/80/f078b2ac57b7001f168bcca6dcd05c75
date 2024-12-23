@@ -1,0 +1,53 @@
+// 댓글 작성
+$('#addComment').click(function () {
+    const content = $('#commentContent').val();
+    const parentNum = $(this).data('parent');
+    const depth = $(this).data('depth');
+	const nick = $(this).data('nick');
+    $.ajax({
+        url: 'comment',
+        method: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({
+            nickName: nick,
+            content: content,
+            parentNum: parentNum,
+            depth: depth
+        }),
+        success: function () {
+            location.reload();
+        }
+    });
+});
+
+// 댓글 수정
+$('.editComment').click(function () {
+    const commentId = $(this).data('id');
+    const content = prompt('수정할 내용을 입력하세요.');
+
+    if (content) {
+        $.ajax({
+            url: 'comment',
+            method: 'PUT',
+            contentType: 'application/json',
+            data: JSON.stringify({ brdNum: commentId, content: content }),
+            success: function () {
+                location.reload();
+            }
+        });
+    }
+});
+
+// 댓글 삭제
+$('.deleteComment').click(function () {
+    const commentId = $(this).data('id');
+    if (confirm('삭제하시겠습니까?')) {
+        $.ajax({
+            url: `comment/${commentId}`,
+            method: 'DELETE',
+            success: function () {
+                location.reload();
+            }
+        });
+    }
+});

@@ -1,0 +1,9 @@
+package com.spring.repository;
+
+import org.springframework.jdbc.core.RowMapper;
+
+import com.spring.domain.BoardLike;
+
+public class BoardLikeRowMapper implements RowMapper<BoardLike>{
+
+}

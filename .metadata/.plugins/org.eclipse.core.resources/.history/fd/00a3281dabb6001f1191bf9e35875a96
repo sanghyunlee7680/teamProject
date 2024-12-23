@@ -1,0 +1,72 @@
+document.addEventListener("click", function (event) {
+// 답글 버튼 이벤트
+if (event.target && event.target.id === "reply") {
+    const replyButton = event.target;
+
+    // 답글 입력 폼 추가
+    const replyDiv = document.createElement("div");
+    
+    replyDiv.innerHTML = `
+        <hr>
+        <div class="container">
+            <div>
+                <em id="nick"><%= sessionId.getNickName() %></em>
+            </div>
+            <textarea class="text" placeholder="답글을 남겨주세요" cols="100" rows="3"></textarea>
+            <button class="replyCom" data-brdNum="<%=brd.getBrdNum()%>" data-depth="3">답글 쓰기</button>
+        </div>
+    `;
+    replyButton.parentElement.appendChild(replyDiv);
+ }
+
+    // 동적으로 생성된 replyCom 버튼 이벤트
+    if (event.target && event.target.classList.contains("replyCom")) {
+        const replyComButton = event.target;
+        const nick = document.querySelector("#nick").textContent;
+        const inputdata = replyComButton.previousElementSibling.value; // textarea 값 가져오기
+        const brdNum = replyComButton.getAttribute("data-brdNum");
+        const depth = replyComButton.getAttribute("data-depth");
+
+        console.log("답글 데이터:", { nick, inputdata, brdNum, depth });
+
+        $.ajax({
+            url: "comment",
+            type: "post",
+            data: JSON.stringify({ nickName: nick, content: inputdata, brdNum: brdNum, depth: depth }),
+            contentType: "application/json",
+            success: function (data) {
+                location.reload();
+            },
+            error: function (errorThrown) {
+                alert("fail");
+            }
+        });
+    }
+});
+var btn = document.querySelector("#comSubmit");
+console.log(btn);
+btn.addEventListener("click", comment);
+function comment(){
+	console.log("케이스2실행");
+	var nick = document.querySelector("#nick").textContent;
+	var inputdata = document.querySelector("#text").value;
+	var brdNum = btn.getAttribute("data-brdnum");
+    var depth = btn.getAttribute("data-depth");
+	console.log(inputdata);
+	console.log(nick);
+	console.log(brdNum);
+	console.log(depth);
+	$.ajax({
+		url : "comment",
+		type : "post",
+		data : JSON.stringify({nickName:nick, content:inputdata, brdNum:brdNum, depth:depth}),
+		contentType : "application/json",
+		success : function(data){
+			location.reload();
+		},
+		error : function(errorThrown){
+			alert("fail");
+		}
+	})
+}
+	

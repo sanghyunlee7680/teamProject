@@ -1,0 +1,25 @@
+package com.spring.repository;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import org.springframework.jdbc.core.RowMapper;
+
+import com.spring.domain.Board;
+
+
+public class CommentRowMapper implements RowMapper<Board> {
+
+	@Override
+	public Board mapRow(ResultSet rs, int rowNum) throws SQLException {
+		Board bd = new Board();
+		bd.setBrdNum(rs.getLong(1));
+		bd.setParentNum(rs.getLong(2));
+		bd.setContent(rs.getString(3));
+		bd.setDepth(rs.getInt(4));
+		bd.setCreateTime(rs.getString(5));
+		bd.setPath(rs.getString(6));
+		return bd;
+	}
+
+}

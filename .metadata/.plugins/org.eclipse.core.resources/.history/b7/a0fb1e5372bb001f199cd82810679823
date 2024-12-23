@@ -1,0 +1,29 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.util.List" %>
+<%@ page import="com.spring.domain.Member" %>
+<!DOCTYPE html>
+<html>
+<%
+	int pageNum = (Integer) request.getAttribute("pageNum");
+	int totalPage = (Integer) request.getAttribute("totalPage");
+%>
+<head>
+<meta charset="UTF-8">
+<title>전체 회원 관리</title>
+</head>
+<body>
+	<div>전체 회원</div>
+	<div>
+		<table border="1">
+			<tr>
+				<th>이메일</th>
+				<th>닉네임</th>
+				<th>성별</th>
+				<th>나이</th>
+				<th>뱃지</th>
+				<th>가입날짜</th>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>
