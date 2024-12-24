@@ -48,7 +48,7 @@
 				</table>
 				<div>
 					<%for(int i=1; i<=totalPage; i++){%>
-						<a href="/board/boards?pageNum=<%=i %>">
+						<a href="/FoodTrip/board/boards?pageNum=<%=i%>">
 						<%if(pageNum == i){ %>
 							<font color='4C5317'><b>[<%=i %>]</b></font>
 						<%}else{ %>

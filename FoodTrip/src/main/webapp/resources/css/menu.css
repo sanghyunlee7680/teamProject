@@ -1,9 +1,39 @@
 @charset "UTF-8";
-
-#menublock{
-	margin:0 20px 0 20px;
+*{ 
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
 }
-.container {display:flex; position:relative}
+/*
+body{
+   margin:0;
+}
+*/
+.nanum-gothic-regular {
+  font-family: "Nanum Gothic", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.menuContainer{
+   display:flex;
+   justify-content:space-between;
+   width:100%;   
+   height: 70px;
+   border:1px solid rgba(0,0,0,0.3);
+   line-height:70px;
+   text-align:center;
+   text-decoration:none;
+   color:black;
+}
+#menublock{
+   margin:0 20px 0 20px;
+}
+#menublock a{
+   margin: 0 30px;
+}
+/*.container {display:flex; position:relative}*/
 .map_wrap, .map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
 .map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#000;text-decoration: none;}
 .map_wrap {position:relative;width:70%;height:500px;}

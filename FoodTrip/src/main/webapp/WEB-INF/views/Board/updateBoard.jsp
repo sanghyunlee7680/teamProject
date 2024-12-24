@@ -5,9 +5,7 @@
 <%@ page import="java.util.List" %>
 <%@ page session="false"%>
 <%
-	List<Board> list = (List<Board>)request.getAttribute("list");
 	Board brd = (Board)request.getAttribute("board");
-	
 %>
 <!DOCTYPE html>
 <html>
@@ -17,12 +15,16 @@
 </head>
 <body>
 	<%@ include file="../menu/menu.jsp" %>
-	<form:form modelAttribute="addBrd" method="post" enctype="multipart/form-data">
+	<form:form modelAttribute="uptBrd" method="post" enctype="multipart/form-data">
 <%
 		if(brd.getDepth()==1){ System.out.println("남바 : " +brd.getBrdNum() + " brdcontent : "  + brd.getContent());%>
 		<p>닉네임 : <form:input path="nickName" value="<%=brd.getNickName()%>" readonly="true" />
 		<p>제목 : <form:input path="title" value="<%=brd.getTitle() %>"/>
 		<p>내용 : 
+		<p><%if(brd.getFileName() != null) { %>
+     			  <img src="<%=request.getContextPath()%>/resources/images/<%=brd.getFileName()%>" style="width:20%"/>
+ 			<% } %>
+        </p>
 			<p><textarea name="content" cols="100" rows="30" ><%=brd.getContent()%></textarea>
 		<p>이미지 첨부:
         <form:input path="image" type="file" id="imageUpload" accept="image/*" multiple="true" />

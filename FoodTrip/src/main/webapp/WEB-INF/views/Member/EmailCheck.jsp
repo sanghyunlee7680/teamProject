@@ -6,25 +6,44 @@
 	String mailCheck = (String)request.getAttribute("true");
 %>
 <head>
-<link rel="stylesheet" href="/FoodTrip/resources/css/bootstrap.min.css">
+<link rel="stylesheet" href="/FoodTrip/resources/css/member.css?version=33">
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>이메일 인증</title>
 </head>
 <body>
-	
-	<form:form modelAttribute="email" method="post">
-	<p>이메일 : <form:input path="email1"/> @
-					<form:select path="email2">
-						<option value="naver.com">naver.com</option>
-						<option value="daum.net">daum.net</option>
-						<option value="gmail.com">gmail.com</option>
-						<option value="nate.com">nate.com</option>
-					</form:select> 
-					<input type="submit" value="이메일인증"/>
-					<%if(mailCheck!=null){%>
-					<div class="alert alert-danger">가입된 이메일이 존재합니다.</div>
-					<%} %>
-	</form:form>
-	
+	<div class="container">
+		<div class="loginForm">
+			<div class="loginBox">
+				<div class="login">
+					<h3>이메일 인증</h3>
+				</div>
+				<form:form modelAttribute="email" method="post">
+				<div class="tablebox">
+					<table>
+						<tr>
+							<th>
+								<form:input path="email1" placeholder="Email" class="inputBox"/> @
+								<form:select path="email2" class="inputBox">
+									<option value="naver.com">naver.com</option>
+									<option value="daum.net">daum.net</option>
+									<option value="gmail.com">gmail.com</option>
+									<option value="nate.com">nate.com</option>
+								</form:select>
+							</th>
+						</tr>
+					</table>
+				</div>
+				<%if(mailCheck!=null){%>
+				<div class="loginError">
+					<b>가입된 이메일이 존재합니다.</b>
+				</div>
+				<%} %>
+				<div class="btnBox">
+					<input type="submit" value="이메일인증" class="submitBtn"/>
+				</div>
+				</form:form>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

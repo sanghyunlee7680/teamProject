@@ -69,8 +69,10 @@ public class MemberController {
 	
 	// 회원가입 폼 제공 
 	@GetMapping("/addMember")
-	public String addMember(@ModelAttribute("addMem")Member member, @RequestParam("userId") String email, Model model) {
+	public String addMember(@ModelAttribute("addMem")Member member, 
+							@RequestParam(value = "userId", required = false)String email, Model model) {
 		System.out.println("addMember()실행 : 회원가입 폼 제공");
+		System.out.println("컨트롤러 이메일 : " + email);
 		if(email.isEmpty()) {
 			System.out.println("존재하니?");
 			return null;
@@ -90,13 +92,15 @@ public class MemberController {
 			model.addAttribute("existNick", "exist");
 			return "Member/addMember";
 		}
-	    Timestamp time = new Timestamp(System.currentTimeMillis());
+	    String badge = "치킨마스터";
+		Timestamp time = new Timestamp(System.currentTimeMillis());
 	    member.setJoinDay(time);
+	    member.setBadgeName(badge);
 	    
 		memberService.setNewMember(member);
 		return "redirect:/member/login";
 	}
-	
+		
 	// 회원 수정 폼 제공
 	@GetMapping("/update")
 	public String updateForm(@ModelAttribute("updateMember") Member member, Model model,HttpSession session) {
@@ -149,7 +153,7 @@ public class MemberController {
 	    	return "Member/EmailCheck";
 	    }
 		
-	    String host ="http://localhost:8080/FoodTrip/addMember";
+	    String host ="http://localhost:8080/FoodTrip/member/addMember";
 		String from ="soledd54@gmail.com";
 		String to = id;
 		String content = "클릭하여 이메일 인증을 완료해주십시오\n"

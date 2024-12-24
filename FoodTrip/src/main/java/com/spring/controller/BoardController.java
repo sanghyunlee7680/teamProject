@@ -107,8 +107,11 @@ public class BoardController {
         model.addAttribute("boardList", boardList);
         model.addAttribute("pageNum", pageNum);
         model.addAttribute("totalPage", totalPage);
+        System.out.println("페이지넘버 : " + pageNum);
+
+        	
+        return "Board/Boards"; 	        	
       
-        return "Board/Boards"; 	
 	}
 	
 	// 게시글 조회 (1개) : ReadOne

@@ -53,7 +53,7 @@
 	<beans:bean id="uploadDirResource" class="org.springframework.core.io.FileSystemResource">
 		<beans:constructor-arg value="c:/upload/"/>
 	</beans:bean>
-
+ 
  	<!-- 이메일 전송 객체 -->
     <beans:bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
         <beans:property name="host" value="smtp.gmail.com" />

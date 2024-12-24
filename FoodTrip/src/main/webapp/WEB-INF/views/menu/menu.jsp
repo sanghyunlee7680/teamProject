@@ -7,15 +7,17 @@
    String adminCheck = null;
    if(session != null){
       sessionId = (Member)session.getAttribute("sessionId");
+      // sessionId 가 null이 아닐 때만 getNickName() 호출
+      if(sessionId != null){
       adminCheck = (String)sessionId.getNickName();
-      System.out.println("게시글 작성 폼 세션 널아님!!");
       System.out.println("닉네임 : " + sessionId.getNickName());
-      System.out.println("sessionIdCheck : " + sessionId != null);
-      System.out.println("adminCheck : " + adminCheck.equals("admin"));
+      System.out.println("참거짓 : " + sessionId != null);
+      System.out.println("참거짓 : " + adminCheck.equals("admin"));         
+      }
    }
 %>
 
-<div style="display:flex">
+<div class="menuContainer">
 <%   if(sessionId != null && adminCheck.equals("admin")){ %>
    <div id="menublock">
       <a href="/FoodTrip/marker/test">마커 생성</a>

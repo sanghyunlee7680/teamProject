@@ -4,30 +4,55 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="/FoodTrip/resources/css/member.css?version=33">
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>로그인</title>
 </head>
 <body>
-	<h1>로그인</h1>
-	<form:form modelAttribute="mem" method="post">
-		<p>이메일 : <form:input path="email1"/> @ 
-					<form:select path="email2" >
-						<option>naver.com</option>
-						<option>daum.net</option>
-						<option>gmail.com</option>
-						<option>nate.com</option>
-					</form:select> 
-		<p>비밀번호 : <form:input path="password"/>
-		<p> <input type="submit" value="로그인">
-		<%
-			String error = (String)request.getAttribute("error");
-			if(error!=null){
-		%>
-			<div class="alert alert-danger">
-				이메일 혹인 비밀번호가 일치하지 않습니다.<br/>
+	<div class="container">
+		<div class="loginForm">
+			<div class="loginBox">
+				<div class="login">
+					<h3>로그인</h3>
+				</div>
+					<form:form modelAttribute="mem" method="post">
+					<div class="tablebox">
+						<table>
+							<tr>
+								<th>
+									<form:input path="email1" class="inputBox" placeholder="Email"/>					
+									 @ <form:select path="email2" class="inputBox">
+											<option>naver.com</option>
+											<option>daum.net</option>
+											<option>gmail.com</option>
+											<option>nate.com</option>
+									</form:select>														
+								</th>			
+							</tr>
+							<tr>
+								<th>
+									<form:input path="password" type="password" class="inputBox_pw" placeholder="Password"/>							
+								</th>
+							</tr>
+						</table>
+					</div>
+					<%
+						String error = (String)request.getAttribute("error");
+						if(error!=null){
+					%>
+						<div class="loginError">
+							<b>이메일 혹인 비밀번호가 일치하지 않습니다.</b><br/>
+						</div>
+						<%} %>
+					<div class="btnBox">
+						<input type="submit" value="로그인" class="submitBtn">
+					</div>
+					<div class="addBtn" onclick="location.href='/FoodTrip/member/email'">
+						<a href="email">회원가입</a>
+					</div>
+				</form:form>
 			</div>
-			<%} %>
-		<a href="email">회원가입</a>
-	</form:form>
+		</div>	
+	</div>
 </body>
 </html>

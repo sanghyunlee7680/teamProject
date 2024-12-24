@@ -25,7 +25,7 @@
 		<p>내용 : 
 			<p> <form:textarea path="content" cols="100" rows="30"/>
 		<p>이미지 첨부:
-        <form:input path="image" type="file" id="imageUpload" accept="image/*" multiple="multiple" />
+        <form:input path="image" type="file" id="imageUpload" accept="image/*" multiple="multiple" /> 
 			<div id="previewContainer">
 	            <img id="previewImage" style="max-width: 300px; display: none;" />
 	        </div>	
@@ -34,6 +34,6 @@
 	
 	<!-- JavaScript for 댓글 AJAX -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="/FoodTrip/resources/js/board.js?version=34" type="text/javascript"></script>
+    <script src="/FoodTrip/resources/js/board.js?version=44" type="text/javascript"></script>
 </body>
 </html>
