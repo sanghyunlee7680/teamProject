@@ -13,52 +13,53 @@
 
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<link rel="stylesheet" href="/FoodTrip/resources/css/menu.css?version=37">
+<title>리뷰 게시판</title>
 </head>
 <body>
-	<%@ include file="../menu/menu.jsp" %>
-	<div>전체</div>
-	<div>
-		<table border="1">
-			<tr>
-				<th>번호</th>
-				<th>제목</th>
-				<th>작성자</th>
-				<th>조회   |   좋아요</th>
-				<th>작성날짜</th>
-			</tr>
-			<%
-			 	List<Board> brd = (List<Board>) request.getAttribute("boardList");
-				for(int j=0; j<brd.size(); j++){
-					Board notice = brd.get(j);
-					long parent = notice.getParentNum();
-					
-			%>
-						<tr>
-							<td><%=notice.getBrdNum() %></td>
-							<td><a href="./BoardView?num=<%=notice.getBrdNum()%>&pageNum=<%=pageNum%>"><%=notice.getTitle() %></a></td>
-							<td><%=notice.getNickName() %></td>
-							<td><i class="fa-solid fa-users"></i> <%=notice.getViews() %> | <i class="fa-solid fa-heart" style="color:pink"></i><%=notice.getLikes() %>
-							</td>
-							<td><%=notice.getCreateTime() %></td>
-						</tr>
-			<%
-				}
-			%>
-				</table>
-				<div>
-					<%for(int i=1; i<=totalPage; i++){%>
-						<a href="/FoodTrip/board/boards?pageNum=<%=i%>">
-						<%if(pageNum == i){ %>
-							<font color='4C5317'><b>[<%=i %>]</b></font>
-						<%}else{ %>
-							<font color='4C5317'>[<%=i %>]</font>
-						<%} %>
-					</a>
-				    <%} %>			
+	<div class="container">
+		<div class="menubar">
+			<%@ include file="../menu/menu.jsp" %>
+			<span>리뷰 게시판</span>
 		</div>
-		<div>
-			<a href="./addBoard">글쓰기</a>
+		<div class="boardcontainer">
+		<table class="boardtable">		
+				<tr>
+					<th>번호</th>
+					<th>제목</th>
+					<th>작성자</th>
+					<th>조회  |  좋아요</th>
+					<th>작성날짜</th>
+				</tr>
+				<%
+				 	List<Board> brd = (List<Board>) request.getAttribute("boardList");
+					for(int j=0; j<brd.size(); j++){
+						Board notice = brd.get(j);
+						long parent = notice.getParentNum();
+						
+				%>
+							<tr>
+								<td><%=notice.getBrdNum() %></td>
+								<td><a href="./BoardView?num=<%=notice.getBrdNum()%>&pageNum=<%=pageNum%>"><%=notice.getTitle() %></a></td>
+								<td><%=notice.getNickName() %></td>
+								<td><i class="fa-solid fa-users"></i> <%=notice.getViews() %> | <i class="fa-solid fa-heart" style="color:pink"></i><%=notice.getLikes() %>
+								</td>
+								<td><%=notice.getCreateTime() %></td>
+							</tr>
+				<%
+					}
+				%>
+		</table>
+		</div>
+		<div class="boardpagination">
+			<%for(int i=1; i<=totalPage; i++){%>
+				<a href="/FoodTrip/board/boards?pageNum=<%=i%>" class="<%= pageNum==i?"boardlink active" : "boardlink"%>">
+				[<%=i %>]
+			</a>
+		    <%} %>			
+		</div>
+		<div class="boardadd">
+			<a href="./addBoard" class="boardaddBtn">글쓰기</a>
 		</div>
 	</div>
 	<!-- JavaScript for 댓글 AJAX -->

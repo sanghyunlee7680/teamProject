@@ -8,7 +8,7 @@
 
 
 .container{
-	width : 80%;
+	width : 1536px;
 	height: 880px;
 	margin: 0 auto;
 }
@@ -22,7 +22,7 @@
 /* 폼 박스 제공 */
 .loginBox{
 	border:none;
-	width : 25%;
+	width : 370px;
 	border-radius : 25px;
 	padding : 50px;
 	margin : 20px;
@@ -74,7 +74,7 @@
 
 /* 로그인 버튼 */
 .submitBtn{
-	width : 100%;
+	width : 265px;
 	padding-top : 10px;
 	padding-bottom : 10px;
 	border-radius : 10px;
@@ -90,7 +90,7 @@
 /* 회원가입 버튼 */
 .addBtn {
 	text-align : center;
-	width : 100%;
+	width : 265px;
 	padding-top : 10px;
 	padding-bottom : 10px;
 	margin-top : 10px;
@@ -114,7 +114,7 @@
 /* 중복 확인 버튼 */
 #checkBtn{
 	text-align : center;
-	width : 50%;
+	width : 123px;
 	padding-top : 5px;
 	padding-bottom : 5px;
 	margin-top : 10px;

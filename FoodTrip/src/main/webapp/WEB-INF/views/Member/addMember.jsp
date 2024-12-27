@@ -8,7 +8,6 @@
 	System.out.println("폼에서이메일 : " + email);
 %>
 <head>
-<link rel="stylesheet" href="/FoodTrip/resources/css/member.css?version=33">
 <link rel="stylesheet" href="/FoodTrip/resources/css/menu.css?version=33">
 <meta charset="UTF-8">
 <title>회원 가입</title>
@@ -24,19 +23,19 @@
 				<form:form modelAttribute="addMem" method="post">
 				<div class="tablebox">	
 					<table>
-						<form:input path="email" value="<%=email%>" class="inputBox_pw" readonly="true"/> 
-						<h4>인증완료</h4> 
-						<form:input path="password"  type="password" placeholder="Password" class="inputBox_pw"/>
-						<form:input path="nickName" id="nickName" placeholder="닉네임" class="inputBox_pw"/>
+						<p class="updfont">Email:<form:input path="email" value="<%=email%>" class="inputBox_pw" readonly="true"/> 
+						<h4 style="color:red">인증완료!</h4>
+						<br> 
+						<p class="updfont">비밀번호:<form:input path="password"  type="password" placeholder="Password" class="inputBox_pw"/>
+						<p class="updfont">닉네임 :<form:input path="nickName" id="nickName" placeholder="닉네임" class="inputBox_pw"/>
 						<button class="overlap" id="checkBtn" type="button">중복확인</button>
 						<div class="btnBox">
-							<p>성별 : <form:radiobutton path="gender" value="Man" checked="checked"/>남성
+							<p class="updfont">성별 : <form:radiobutton path="gender" value="Man" checked="checked"/>남성
 									 <form:radiobutton path="gender" value="Woman"/>여성
 						</div>
+						<p class="updfont">나이 :
 						<form:input type="number" path="age" class="inputBox_pw" value="나이" placeholder="나이"/>
-						<div class="btnBox">
-							<input type="submit" value="회원가입" disabled class="submitBtn">
-						</div>
+						<input type="submit" value="회원가입" disabled class="submitBtn">
 					</table>
 				</div>	
 				</form:form>

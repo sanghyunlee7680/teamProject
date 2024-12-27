@@ -35,8 +35,12 @@ public class MemberController {
 	
 	// 로그인 폼 제공
 	@GetMapping("/login")
-	public String loginForm(@ModelAttribute("mem") Member member) {
+	public String loginForm(@ModelAttribute("mem") Member member,HttpServletRequest request) {
 		System.out.println("loginForm()실행 : 로그인 폼 제공");
+		HttpSession session = request.getSession(false);
+		if(session!=null){
+			session.invalidate();
+		}
 		return "/Member/login";
 	}
 	
@@ -183,10 +187,10 @@ public class MemberController {
 	// 전체 회원 조회 ( 관리자 ) 
 	@GetMapping("/allMembers")
 	public String getAllMembers(@RequestParam(value="pageNum", required = false, defaultValue = "1")int pageNum,
-								@RequestParam(value="memberlist", required = false, defaultValue = "1")int memberlist, Model model,
+								@RequestParam(value="memberline", required = false, defaultValue = "1")int memberline, Model model,
 								HttpSession session) {
 		System.out.println("getAllMembers() 실행 : 전체 회원 조회 ( 관리자 ) ");
-		System.out.println("컨트롤러에 파라미터로 들어오는 멤버리스트 번호 : " + memberlist);
+		System.out.println("?pageNum="+pageNum+"&memberline=" + memberline);
 		Member sessionId = (Member) session.getAttribute("sessionId");
 		if (sessionId == null) {
             return "redirect:/member/login";
@@ -196,20 +200,22 @@ public class MemberController {
 			return "redirect:/access";
 		}
 		System.out.println("관리자맞나? : " + sessionId.getNickName().equals("admin"));
-		int limit=100; // 한 페이지에 표시할 게시글 수 
-		List<Member> memberList = memberService.getAllMembers((pageNum-1)*limit, limit, memberlist);
+		int limit=10; // 한 페이지에 표시할 게시글 수 
+		List<Member> memberList = memberService.getAllMembers((pageNum-1)*limit, limit, memberline);
 		int totalPage = (int) Math.ceil((double) memberService.getMemberCount()/limit);
 		System.out.println("멤버리스트 : " + memberList);
 		model.addAttribute("memberList", memberList);
 		model.addAttribute("pageNum", pageNum);
 		model.addAttribute("totalPage", totalPage);
+		model.addAttribute("memberline", memberline);
 		
 		return "Member/allMembers";
 	}
 	
 	// 회원 삭제 ( 관리자 )
 	@GetMapping("/deleteMember")
-	public String deleteMemberAdmin(@RequestParam("email")String email, HttpSession session) {
+	public String deleteMemberAdmin(@RequestParam("email")String email,
+									HttpSession session) {
 		System.out.println("deleteMemberAdmin() 실행 : 관리자 회원 삭제");
 		Member sessionId = (Member) session.getAttribute("sessionId");
         if (sessionId == null) {
@@ -217,7 +223,10 @@ public class MemberController {
         }
 		if (!sessionId.getNickName().equals("admin")) {
 			return "redirect:/access";
-		}		
+		}
+		
+
+		
 		memberService.setDeleteMember(email);
 		return "redirect:/member/allMembers";
 	}

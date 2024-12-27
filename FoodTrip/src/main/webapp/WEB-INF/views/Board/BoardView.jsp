@@ -2,16 +2,21 @@
 <%@ page import="com.spring.domain.*" %>
 <%@ page import="java.util.List" %>
 <!DOCTYPE html>
+<%
+	Board board = (Board) request.getAttribute("board");
+%>
 <html>
 <head>
+<link rel="stylesheet" href="/FoodTrip/resources/css/menu.css?version=35">
     <title>게시글 상세보기</title>
-<link rel="stylesheet" href="/FoodTrip/resources/css/bootstrap.min.css">
 </head>
 <body>
-	<%@ include file="../menu/menu.jsp" %>
     <div class="container">
+		<div class="menubar">
+			<%@ include file="../menu/menu.jsp" %>
+			<span><%=board.getTitle()%><span>
+        </div>
         <% 
-	        Board board = (Board) request.getAttribute("board");
 	        List<Board> comments = (List<Board>) request.getAttribute("comments");
         	System.out.println("코멘트 : " + comments);
     	    for(int i=0; i<comments.size(); i++) {
@@ -55,7 +60,7 @@
         			</button>
         			<%}else if(!sessionId.getNickName().equals(brkNick)){ %>
         			<button id="likeBtn" data-brdNum="<%=board.getBrdNum()%>" data-nick="<%=sessionId.getNickName()%>">
-        				<i class="fa-regular fa-heart"></i>
+        				<i class="fa-regular fa-heart" style="color:pink"></i>
         			</button>
         			<%} %>
         	</small>
@@ -143,11 +148,11 @@
 		       	<%	}
 	        	} %>
 
+    </div>
     <!-- JavaScript for 댓글 AJAX -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="/FoodTrip/resources/js/board.js?version=58" type="text/javascript"></script>
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/08b7540d84.js" crossorigin="anonymous"></script>
-    </div>
 </body>
 </html>
