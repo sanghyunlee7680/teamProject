@@ -6,8 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.spring.domain.Board;
-import com.spring.domain.BoardLike;
+import com.spring.domain.Road;
 import com.spring.repository.BoardRepository;
+import com.spring.repository.RoadRepository;
 
 @Service
 public class BoardServiceImpl implements BoardService {
@@ -15,10 +16,21 @@ public class BoardServiceImpl implements BoardService {
 	@Autowired
 	private BoardRepository boardRepository;
 	
+	@Autowired
+	private RoadService roadSerivce;
+	
 	// 게시글 생성
 	public void setAddBoard(Board board) {
 		boardRepository.setAddBoard(board);
 	}
+	
+	@Override
+	public Road getMyRoad(String usernick) {
+		Road road = roadSerivce.readMyCourse(usernick);
+		System.out.println("controller 전 : "+ road.getPoints());
+		return road;
+	}
+
 	// 게시글 목록 조회
 	public List<Board> getAllBoards(int offset, int limit) {
 		return boardRepository.getAllBoards(offset, limit);
@@ -31,6 +43,11 @@ public class BoardServiceImpl implements BoardService {
 	public Board getOneBoard(long brdNum) {
 		return boardRepository.getOneBoard(brdNum);
 	}
+	// 게시글 상세 조회 -- 코스 return
+	public Road getOneBoard(String usernick) {
+		return roadSerivce.readMyCourse(usernick);
+	}
+	
 	// 게시글 수정
 	public void setUpdateBoard(Board board) {
 		boardRepository.setUpdateBoard(board);
@@ -61,19 +78,5 @@ public class BoardServiceImpl implements BoardService {
         return boardRepository.getCommentsByBoardId(boardId);
     }
 	
-    // 좋아요 활성화
-    public void addLike(Board board) {
-    	boardRepository.addLike(board);
-    }
-    
-    // 좋아요 비활성화
-    public void cancelLike(Board board) {
-    	boardRepository.cancelLike(board);
-    }
-    
-    // 좋아요 확인
-    public BoardLike getCheckLikes(long brdNum, String nick) {
-    	return boardRepository.getCheckLikes(brdNum, nick);
-    }
 	
 }

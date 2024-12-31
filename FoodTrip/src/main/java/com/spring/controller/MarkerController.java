@@ -77,67 +77,51 @@ public class MarkerController {
 	 */
 	@ResponseBody
 	@PostMapping("/addMarker")
-	public String addMarker(@RequestBody HashMap<String, Object> map, HttpServletRequest req) {
+	public String addMarker(@RequestBody HashMap<String, Object>[] map, HttpServletRequest req) {
 //		System.out.println(map);
-
-		Marker marker = new Marker();
-		//marker.setmarkerId("TEST");
-		marker.setPointX(Double.parseDouble((String)map.get("pointX")));
-		marker.setPointY(Double.parseDouble((String)map.get("pointY")));
-		marker.setPointName((String)map.get("pointName"));
-		marker.setAddress((String)map.get("address"));
-		marker.setPhone((String)map.get("phone"));
-		marker.setCategory((String)map.get("category"));
-		marker.setDescription((String)map.get("description"));
-		String pname = marker.getPointName();
-		String paddr = marker.getAddress();
-		
-		//	以묐났 �솗�씤
-		Boolean ie = markerService.isExist(pname, paddr);
-		if(ie) {
-			return null;
-		}
-		//移댄뀒怨좊━�뿉 �뵲�씪 留덉빱 遺꾨쪟
-		String tmp = marker.getCategory();
-		tmp = tmp.replaceAll("\\s+", "");
-		String cate[] = tmp.split(">");
-		String result[] = cate[1].split(",");
-		
-		for(int i=0; i<cate.length; i++)
-			System.out.println(cate[i]);
-		//移댄뀒怨좊━�뿉 �뵲�씪 ID遺��뿬
-		if(cate[0].equals("�쓬�떇�젏")) {
-			//System.out.println(restId+numToStr);
-			marker.setmarkerId(restId);
-		}else { 
-			if(result[0].equals("愿�愿�")){
-				marker.setmarkerId(tourId);
-			}else if(result[0].equals("�닕諛�")) {
-				marker.setmarkerId(hotelId);
+		System.out.println(map.length);		
+		List<Marker> list = new ArrayList();
+		for(int i=0; i<map.length; i++) {
+			System.out.println(i+". "+map[i]);
+			Marker marker = new Marker();
+			//marker.setmarkerId("TEST");
+			marker.setPointX(Double.parseDouble((String)map[i].get("pointX")));
+			marker.setPointY(Double.parseDouble((String)map[i].get("pointY")));
+			marker.setPointName((String)map[i].get("pointName"));
+			marker.setAddress((String)map[i].get("address"));
+			marker.setPhone((String)map[i].get("phone"));
+			marker.setCategory((String)map[i].get("category"));
+			marker.setUrlText((String)map[i].get("urlText"));
+			String pname = marker.getPointName();
+			String paddr = marker.getAddress();
+			
+			Boolean ie = markerService.isExist(pname, paddr);
+			if(ie) {
+				return null;
 			}
-		}
-		
-		String realPath = req.getServletContext().getRealPath("resources/images");
-		//System.out.println(realPath);
-		MultipartFile file = marker.getImage();
-		String imageName = null;
-		File f = null;
-		if(file !=null) {
-			imageName= file.getOriginalFilename();
-			f = new File(realPath, imageName);
-		}
-		if(imageName != null && !imageName.isEmpty()) {
-			try {
-				System.out.println("imageName null �븘�떂");
-				file.transferTo(f);
-				System.out.println("�뙆�씪 trans�셿猷�");
-				marker.setImageName(imageName);
-			}catch(Exception e) {
-				e.printStackTrace();
+			//
+			String tmp = marker.getCategory();
+			tmp = tmp.replaceAll("\\s+", "");
+			String cate[] = tmp.split(">");
+			String result[] = cate[1].split(",");
+			
+			for(int j=0; j<cate.length; j++)
+				System.out.println(cate[j]);
+			//
+			if(cate[0].equals("음식점")) {
+				//System.out.println(restId+numToStr);
+				marker.setmarkerId(restId);
+			}else { 
+				if(result[0].equals("관광")){
+					marker.setmarkerId(tourId);
+				}else if(result[0].equals("숙박")) {
+					marker.setmarkerId(hotelId);
+				}
 			}
+			list.add(marker);
 		}
-		
-		markerService.markerCreate(marker);
+		//markerService.markerCreate(marker);
+		markerService.markerCreate(list);
 		
 		return "success";
 	}
@@ -176,11 +160,7 @@ public class MarkerController {
 		
 		model.addAttribute("list", list);
 		//Map<String, Marker>[] a = new HashMap<String, Marker>();
-		/*
-		 * list�뒗 dto瑜� 媛�吏�怨� �엳�뒗 諛곗뿴.
-		 * 諛곗뿴 �븯�굹�븯�굹�뒗 dto�쓽 二쇱냼瑜� �떞怨� �엳�떎. 諛곗뿴�쓣 �뵲�씪媛�硫� dto媛� �굹�삩�떎.
-		 * list[0]�� dto瑜� 媛�由ы궎硫� list[0].getxxx()�쓣 �넻�빐 �빐�떦 dto�쓽 媛믪쓣 媛��졇�삱 �닔 �엳�떎.
-		 * */
+		
 	//	Map<String, String> result = new HashMap();
 		String listJson = g.toJson(list);
 		//System.out.println(listJson);
@@ -234,7 +214,7 @@ public class MarkerController {
 		marker.setAddress((String)map.get("address"));
 		marker.setPhone((String)map.get("phone"));
 		marker.setCategory((String)map.get("category"));
-		marker.setDescription((String)map.get("description"));
+		marker.setUrlText((String)map.get("urlText"));
 
 		//紐⑤뜽�씠�룞
 		markerService.markerUpdate(marker);
@@ -260,7 +240,6 @@ public class MarkerController {
 		
 		return "redirect:readalljson";
 	}
-	
 	
 	
 	/*
@@ -305,27 +284,27 @@ public class MarkerController {
 	 * Param : Marker, HttpServlet
 	 * return : String
 	 */
-	//@PostMapping("/create")
+	//@PostMapping("/create")/
 	public String markerInsert(@ModelAttribute("NewMarker") Marker marker, HttpServletRequest req) {
 		
 		String realPath = req.getServletContext().getRealPath("resources/images");
 		System.out.println(realPath);
-		MultipartFile file = marker.getImage();
-		String imageName = file.getOriginalFilename();
-		File f = new File(realPath, imageName);
-		
-		if(imageName != null && !imageName.isEmpty()) {
-			try {
-				System.out.println("imageName null �븘�떂");
-				file.transferTo(f);
-				System.out.println("�뙆�씪 trans�셿猷�");
-				marker.setImageName(imageName);
-			}catch(Exception e) {
-				e.printStackTrace();
-			}
-		}
-		
-		markerService.markerCreate(marker);	
+//		MultipartFile file = marker.getImage();
+//		String imageName = file.getOriginalFilename();
+//		File f = new File(realPath, imageName);
+//		
+//		if(imageName != null && !imageName.isEmpty()) {
+//			try {
+//				System.out.println("imageName null �븘�떂");
+//				file.transferTo(f);
+//				System.out.println("�뙆�씪 trans�셿猷�");
+//				marker.setImageName(imageName);
+//			}catch(Exception e) {
+//				e.printStackTrace();
+//			}
+//		}
+//		
+	//	markerService.markerCreate(marker);	
 		
 		return "redirect:home";
 	}
@@ -389,19 +368,19 @@ public class MarkerController {
 	public String markerUpdateExecute(@ModelAttribute("UpdateMarker") Marker marker, HttpServletRequest req) {
 		System.out.println("update Execute IN");
 		String realpath = req.getServletContext().getRealPath("resources/images"); 
-		System.out.println("image name : "+marker.getImageName());
-		
-		MultipartFile mpf = marker.getImage();
-		if(mpf != null && !mpf.isEmpty()) {
-			String imagename = mpf.getOriginalFilename();
-			File f = new File(realpath,imagename);
-			try {
-				mpf.transferTo(f);
-				marker.setImageName(imagename);
-			}catch(Exception e) {
-				e.printStackTrace();
-			}
-		}
+//		System.out.println("image name : "+marker.getImageName());
+//		
+//		MultipartFile mpf = marker.getImage();
+//		if(mpf != null && !mpf.isEmpty()) {
+//			String imagename = mpf.getOriginalFilename();
+//			File f = new File(realpath,imagename);
+//			try {
+//				mpf.transferTo(f);
+//				marker.setImageName(imagename);
+//			}catch(Exception e) {
+//				e.printStackTrace();
+//			}
+//		}
 		markerService.markerUpdate(marker);
 		return "redirect:home";
 	}

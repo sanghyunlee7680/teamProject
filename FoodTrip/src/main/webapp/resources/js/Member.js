@@ -8,13 +8,6 @@ btn.addEventListener("click", overlap);
 function overlap(){
 	console.log("중복확인 실행");
 	var inputdata = document.querySelector("#nickName").value;
-	var nick = $(this).data('nick');
-	if(inputdata===nick){
-		alert("기존 닉네임을 유지합니다.");
-		isNickNameValid = true;
-		submitBtn.disabled = false; // 사용 가능하면 버튼 활성화
-		return;
-	}
 	console.log(inputdata);
 	$.ajax({
 		url : "overlap",

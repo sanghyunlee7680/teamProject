@@ -3,7 +3,7 @@ package com.spring.service;
 import java.util.List;
 
 import com.spring.domain.Board;
-import com.spring.domain.BoardLike;
+import com.spring.domain.Road;
 
 public interface BoardService {
 
@@ -11,21 +11,19 @@ public interface BoardService {
 	List<Board> getAllBoards(int offset, int limit);
 	int getBoardCount();
 	Board getOneBoard(long brdNum);
+	Road getOneBoard(String usernick);
 	void setUpdateBoard(Board board);
 	void deleteBoard(long brdNum);
+	void setViews(long brdNum);
 
-
+	Road getMyRoad(String usernick);
+	
 	void addComment(Board board);
 	void updateComment(Board board);
 	void deleteComment(long commentId);
 	
-	List<Board> getCommentsByBoardId(long brdNum);
 	
-
-	void setViews(long brdNum);
-	void addLike(Board board);
-	void cancelLike(Board board);
-	BoardLike getCheckLikes(long brdNum, String nick);
+	List<Board> getCommentsByBoardId(long brdNum);
 
 
 }

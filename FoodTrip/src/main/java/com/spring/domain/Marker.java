@@ -11,18 +11,18 @@ public class Marker implements Serializable{
 	 */
 	private static final long serialVersionUID = 2801250020627927749L;
 	
-	private String markerId;	//마커명
-	private Double pointX;		//좌표 X
-	private Double pointY;		//좌표 Y
-	private String category;	//카테고리
-	private String pointName;	//장소명
-	private String phone;		//전화번호
-	private String address;		//주소
-	private String description;	//장소설명
-	private MultipartFile image;//장소 이미지
-	private String imageName;	//이미지 이름
+	private String markerId;	//	마커명
+	private Double pointX;		//	좌표 X
+	private Double pointY;		//	좌표 Y
+	private String category;	//	카테고리
+	private String pointName;	//	장소명
+	private String phone;		//	전화번호
+	private String address;		//	주소
+	private String urlText;		//	사이트 URL
+	private String qrcode;		//	QR 코드
 	
 	
+	//	get(), set()
 	public String getmarkerId() {
 		return markerId;
 	}
@@ -65,23 +65,17 @@ public class Marker implements Serializable{
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public String getDescription() {
-		return description;
+	public String getUrlText() {
+		return urlText;
 	}
-	public void setDescription(String description) {
-		this.description = description;
+	public void setUrlText(String description) {
+		this.urlText = description;
 	}
-	public MultipartFile getImage() {
-		return image;
+	public String getQrcode() {
+		return qrcode;
 	}
-	public void setImage(MultipartFile image) {
-		this.image = image;
-	}
-	public String getImageName() {
-		return imageName;
-	}
-	public void setImageName(String imageName) {
-		this.imageName = imageName;
+	public void setQrcode(String qrcode) {
+		this.qrcode = qrcode;
 	}
 	
 	

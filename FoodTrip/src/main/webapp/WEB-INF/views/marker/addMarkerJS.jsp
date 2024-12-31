@@ -6,83 +6,88 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="/FoodTrip/resources/css/menu.css"/>
-<style>
- 	.wrap {position: absolute;left: 0;bottom: 40px;width: 288px;height: 132px;margin-left: -144px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
-    .wrap * {padding: 0;margin: 0;}
-    .wrap .info {width: 286px;height: 120px;border-radius: 5px;border-bottom: 2px solid #ccc;border-right: 1px solid #ccc;overflow: hidden;background: #fff;}
-    .wrap .info:nth-child(1) {border: 0;box-shadow: 0px 1px 2px #888;}
-    .info .title {padding: 5px 0 0 10px;height: 30px;background: #eee;border-bottom: 1px solid #ddd;font-size: 18px;font-weight: bold;}
-    .info .close {position: absolute;top: 10px;right: 10px;color: #888;width: 17px;height: 17px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');}
-    .info .close:hover {cursor: pointer;}
-    .info .body {position: relative;overflow: hidden;}
-    .info .desc {position: relative;margin: 13px 0 0 90px;height: 75px;}
-    .desc .ellipsis {overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
-    .desc .jibun {font-size: 11px;color: #888;margin-top: -2px;}
-    .info .img {position: absolute;top: 6px;left: 5px;width: 73px;height: 71px;border: 1px solid #ddd;color: #888;overflow: hidden;}
-    .info:after {content: '';position: absolute;margin-left: -12px;left: 50%;bottom: 0;width: 22px;height: 12px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
-    .info .link {color: #5085BB;}
-</style>
+<link rel="stylesheet" href="/FoodTrip/resources/css/menu.css?version=4"/>
+<link rel="stylesheet" href="/FoodTrip/resources/css/Marker.css?version=6"/>
+<script src="https://kit.fontawesome.com/7676881a65.js" crossorigin="anonymous"></script>
 </head>
 <body>
-	<%@ include file="../menu/menu.jsp" %>
 	<div class="container">	
-		<div class="map_wrap">
-		    <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
-		
-		    <div id="menu_wrap" class="bg_white">
-		        <div class="option">
-		            <div>
-		                <form onsubmit="searchPlaces(); return false;">
-		                    키워드 : <input type="text" id="keyword" size="15"> 
-		                    <button type="submit">검색하기</button> 
-		                </form>
-		            </div>
-		        </div>
-		        <hr>
-		        <ul id="placesList"></ul>
-		        <div id="pagination"></div>
-		    </div>
+		<div class="menubar">
+			<%@ include file="../menu/menu.jsp" %>
+			<i class="fa-solid fa-location-dot" id="headIcon"></i>&nbsp; <span class="headTitle addmTitle">마커 생성</span>
 		</div>
-		<div>
-			<form onsubmit="return false;">
-				<p>
-					<label>마커ID</label>
-					<input id="markerId"/>
-				</p>
-				<p>
-					<label>좌표 X</label>
-					<input id="pointX"/>
-				<p>
-					<label>좌표 Y</label>
-					<input id="pointY"/>
-				<p>
-					<label>카테고리</label>
-					<input id="category"/>
-				<p>
-					<label>장소명</label>
-					<input id="pointName"/>
-				<p>
-					<label>전화번호</label>
-					<input id="phone"/>
-				<p>
-					<label>주소</label>
-					<input id="address"/>
-				<p>
-					<label>정보보기</label>
-					<a href="#" id="urlData" target="_blank">정보보기</a>
-				<p>
-					<label>장소설명</label>
-					<textarea id="description" col="50" row="20"></textarea>
-				<p>
-					<label>장소이미지</label>
-					<input id="image" type="file"/>
+		<div class="description">
+			<p> * 마커 등록은 키워드 검색 시 목록에 출력되는 한 페이지(15개)가 배열로 저장됩니다.
+			<p> * 한 페이지 당 15개, 총 3페이지가 제공되며 페이지를 넘길 때마다 저장되므로 따로 저장하지 않아도 됩니다. 
+			<p> * 넣으려는 마커를 검색 후 등록 버튼을 누르면 등록된 마커가 하나씩 서버로 저장되게 됩니다. 이 때 다른 동작을 하시면 오류가 날 수 있습니다.
+		</div>
+		<div class="contentBody">
+			<div class="map_wrap">
 				
-				<button id="sendData">전송</button>
-			</form>
+			    <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
+			
+			    <div id="menu_wrap" class="bg_white">
+			        <div class="option">
+			            <div>
+			                <form onsubmit="searchPlaces(); return false;">
+			                    키워드 : <input type="text" id="keyword" size="15"> 
+			                    <button type="submit">검색하기</button> 
+			                </form>
+			            </div>
+			        </div>
+			        <hr>
+			        <ul id="placesList"></ul>
+			        <div id="pagination"></div>
+			    </div>
+			</div>
+			<div class="inputForm">
+				<form onsubmit="return false;">
+					<table>
+						<tr>
+							<td><label>마커ID</label></td>
+							<td><input id="markerId"/></td>
+						</tr>
+						<tr>
+							<td><label>좌표 X</label></td>
+							<td><input id="pointX"/></td>
+						</tr>
+						<tr>
+							<td><label>좌표 Y</label></td>
+							<td><input id="pointY"/></td>
+						</tr>
+						<tr>
+							<td><label>카테고리</label></td>
+							<td><input id="category"/></td>
+						</tr>
+						<tr>
+							<td><label>장소명</label></td>
+							<td><input id="pointName"/></td>
+						</tr>
+						<tr>
+							<td><label>전화번호</label></td>
+							<td><input id="phone"/></td>
+						</tr>
+						<tr>
+							<td><label>주소</label></td>
+							<td><input id="address"/></td>
+						</tr>
+						<tr>
+							<td><label>URL</label></td>
+							<td><input id="urlText"/><a href="#" id="urlLink" target="_blank"><i class="fa-solid fa-link"></i></a></td>
+						</tr>
+						<tr>
+							<td><button id="sendData">전송</button></td>
+						</tr>
+						<tr class="countRow">
+							<td>현재 <span class="count"></span>개 저장 중</td>						
+						</tr>
+					</table>
+				</form>
+			</div>
 		</div>
+		<%@ include file="../footer/footer.jsp" %>
 	</div>
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a8fb3e9990ea2c741f7c154e957f99be&libraries=services"></script>
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ca31d06e7d0446fcb67025d7d71b84e6&libraries=services"></script>
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script>
 	
@@ -94,8 +99,10 @@
 	var pn = document.querySelector("#pointName");
 	var ph = document.querySelector("#phone");
 	var addr = document.querySelector("#address");
-	var urldata = document.querySelector("#urlData");
-	var desc = document.querySelector("#description");
+	var urlText = document.querySelector("#urlText");
+	var urlLink = document.querySelector("#urlLink");
+	var countView = document.querySelector(".count");
+	
 	var send = document.querySelector("#sendData");
 	var insertKeyword = document.querySelector("#keyword");
 	var saveKeyword;
@@ -115,17 +122,22 @@
 			"pointName":"",
 			"phone":"",
 			"address":"",
-			"description":""
 	};
 	
-	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-	    mapOption = {
+	
+	makeMap();
+	
+	// 지도 출력을 위한 기본적인 코드 -------- START
+	function makeMap(){
+		mapContainer = document.getElementById('map'); // 지도를 표시할 div 
+		var mapOption = { 
 	        center: new kakao.maps.LatLng(35.2538433, 128.6402609), // 지도의 중심좌표
-	        level: 3 // 지도의 확대 레벨
-	    };  
+	        level: 9 // 지도의 확대 레벨
+	    };
 
-	// 지도를 생성합니다    
-	var map = new kakao.maps.Map(mapContainer, mapOption); 
+		map = new kakao.maps.Map(mapContainer, mapOption); 
+	}
+	// 지도 출력을 위한 기본적인 코드 -------- END
 
 	// 장소 검색 객체를 생성합니다
 	var ps = new kakao.maps.services.Places();  
@@ -136,12 +148,10 @@
 	
 	//이벤트 할당
 	send.addEventListener('click', sendAllData);
-	
-	
+
 	//setInsertKey();
 	// 키워드로 장소를 검색합니다
 	searchPlaces();
-	
 
 	// 키워드 검색을 요청하는 함수입니다
 	function searchPlaces() {
@@ -240,7 +250,7 @@
 	        // mouseout 했을 때는 인포윈도우를 닫습니다
 	        (function(marker, data) {
 	        	overlay_num = overlays.length;
-				setDTO(data);
+				setDTO(data);					//여기서 목록에 요소 하나씩 dto로 추가된다.
 				//console.log(data);
 	            kakao.maps.event.addListener(marker, 'click', function() {
 	            	var content = '<div class="wrap">' + 
@@ -269,21 +279,9 @@
 	            	overlays.push(overlay);
 	            	overlay.setMap(map);
 	            });
-/*
-	            kakao.maps.event.addListener(marker, 'mouseout', function() {
-	                infowindow.close();
-	            });
-
-	            itemEl.onmouseover =  function () {
-	                displayInfowindow(marker, title);
-	            };
-
-	            itemEl.onmouseout =  function () {
-	                infowindow.close();
-	            };*/
 	        })(marker, places[i]);
-	        
-	        
+			
+	        //	키워드 검색 리스트에 추가
 	        fragment.appendChild(itemEl);
 	    }
 		
@@ -409,7 +407,8 @@
 	    	addr.value = data.address_name;
 	    	ph.value = data.phone;
 	    	cate.value = data.category_name;
-	    	urldata.href = data.place_url;
+	    	urlText.href = data.place_url;
+	    	urlLink.href = data.place_url;
 	    	setDTO(data);
 	     };
 	}
@@ -440,8 +439,8 @@
 			addr.value = data.address_name;
 			ph.value = data.phone;
 			cate.value = data.category_name;
-			urldata.href = data.place_url;
-			desc.value = data.place_url;
+			urlText.value = data.place_url;
+			urlLint.href = data.place_url;
 			//setDTO(data);
 		});
 	}
@@ -455,18 +454,23 @@
 		dtoObj.pointName = data.place_name;
 		dtoObj.phone = data.phone;
 		dtoObj.address = data.address_name;
-		dtoObj.description = data.place_url;
+		dtoObj.urlText = data.place_url;
 		dtoObjAry.push(dtoObj);
 		//console.log(dtoObjAry);
-		console.log(dtoObjAry.length);
+		//console.log(dtoObjAry.length);
+		countView.innerHTML = dtoObjAry.length;
 	}
 	
 	function sendAllData(){
 		console.log(dtoObjAry.length);
+		console.log(dtoObjAry);
+		/*
 		for(var i=0; i<dtoObjAry.length; i++){
         	//setDTO(data);
+        	//	여기서 ajax로 하나씩 보낸다.
         	sendData(dtoObjAry[i]);
-		}
+		}*/
+		sendData(dtoObjAry);
 		dtoObjAry=[];
 	}
 	
@@ -474,12 +478,11 @@
 		$.ajax({
 			url : "/FoodTrip/marker/addMarker",
 			type : "post",
-			async : false,
 			data : JSON.stringify(dtoOne),
 			contentType : "application/json",
 			success : function(response){
 				if(response){
-					//alert("마커가 정상적으로 입력되었습니다.");   //현재 배열 요소를 한번씩 보내고 있어서 일부러 중지
+					alert("마커가 정상적으로 입력되었습니다.");  
 				}else{
 					alert("마커 데이터가 이미 존재합니다.");
 				}

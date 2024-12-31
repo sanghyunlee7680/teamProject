@@ -1,0 +1,36 @@
+@charset "UTF-8";
+
+	.container{
+		width:80%;
+		margin:0 auto;
+	}
+	
+	.contentBody{
+		margin-top:150px;
+		height:500px;
+		width:100%;
+		display:flex;
+		align-items:center;
+		justify-content:center;
+		position:relative;
+	}
+	.userData{
+		text-align:center;
+		
+	}
+	.userData > p, a{
+		position:relative;
+		z-index:10;
+	}
+	
+	.userData > p{
+		font-size:30px;
+		margin:30px 0;
+	}
+	
+	.backImg{
+		position:absolute;
+		top:0;
+		left:30%;
+		opacity:0.2;
+	}

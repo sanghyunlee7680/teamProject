@@ -15,16 +15,16 @@ public class BoardRowMapper implements RowMapper<Board>{
 		bd.setBrdNum(rs.getLong(1));
 		bd.setParentNum(rs.getLong(2));
 		bd.setNickName(rs.getString(3));
-		bd.setTitle(rs.getString(4));
-		bd.setContent(rs.getString(5));
-		bd.setCreateTime(rs.getString(6));
-		bd.setUpdateDay(rs.getString(7));
-		bd.setIp(rs.getString(8));
-		bd.setLikes(rs.getInt(9));
-		bd.setViews(rs.getInt(10));
-		bd.setDepth(rs.getInt(11));
-		bd.setPath(rs.getString(12));
-		bd.setFileName(rs.getString(13 ));
+		bd.setRoadId(rs.getString(4));
+		bd.setTitle(rs.getString(5));
+		bd.setContent(rs.getString(6));
+		bd.setCreateTime(rs.getString(7));
+		bd.setUpdateDay(rs.getString(8));
+		bd.setIp(rs.getString(9));
+		bd.setLikes(rs.getInt(10));
+		bd.setViews(rs.getInt(11));
+		bd.setDepth(rs.getInt(12));
+		bd.setPath(rs.getString(13));
 		return bd;
 	}
 	

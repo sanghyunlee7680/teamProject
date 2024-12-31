@@ -6,6 +6,13 @@
   	font-weight: bold;
   	font-style: normal;
 
+
+	.dongle-regular {
+	  font-family: "Dongle", serif;
+	  font-weight: 400;
+	  font-style: normal;
+	}
+
 ***************************************/
 
 @charset "UTF-8";
@@ -18,10 +25,7 @@
 }
 
 
-.container{
-	width : 1536px;
-	margin: 0 auto;
-}
+
 /***************************************
 
 			HOME CSS
@@ -70,17 +74,15 @@
 .boardtable th{
 	background-color: lightblue;
     color: white;
-    font-family: "Noto Serif KR", serif;
-  	font-optical-sizing: auto;
-  	font-weight: bold;
-  	font-style: normal;
+    font-family: "Dongle", serif;
+	  font-weight: 400;
+	  font-style: normal;
 }
 
 .boardtable tr{
-	font-family: "Noto Serif KR", serif;
-  	font-optical-sizing: auto;
-  	font-weight: bold;
-  	font-style: normal;
+	font-family: "Dongle", serif;
+	  font-weight: 400;
+	  font-style: normal;
 }
 .boardtable tr:nth-child(even) {
     background-color: #f2f2f2;
@@ -127,10 +129,9 @@
     border: 1px solid lightblue;
     border-radius: 5px;
     color: lightblue;
-   	font-family: "Noto Serif KR", serif;
-  	font-optical-sizing: auto;
-  	font-weight: bold;
-  	font-style: normal;
+   	font-family: "Dongle", serif;
+	  font-weight: 400;
+	  font-style: normal;
 }
 
 .boardaddBtn:hover {
@@ -138,6 +139,7 @@
     color: white;
     transition: 1s;
 }
+
 /***************************************
 
 			MEMBER CSS
@@ -163,6 +165,19 @@
 	background-color : white;
 }
 
+.loginBox_add{
+	border:none;
+	position:absolute;
+	top:160px;
+	left: 750px;
+	width : 370px;
+	border-radius : 25px;
+	padding : 50px;
+	margin : 20px;
+	box-shadow: 10px 10px 10px 10px gray;
+	background-color : white;
+}
+
 /* 로그인 배너 */
 .login{
 	padding : 10px;
@@ -171,10 +186,9 @@
 /* 배너 글자 크기 및 위치 조정*/
 .login > h3 {	
 	text-align : center;
-	font-family: "Noto Serif KR", serif;
-  	font-optical-sizing: auto;
-  	font-weight: bold;
-  	font-style: normal;
+	font-family: "Dongle", serif;
+	  font-weight: 400;
+	  font-style: normal;
   	font-size:30px;
 }
 /* 테이블 크기 및 정렬 */
@@ -199,6 +213,12 @@
 	border-radius : 5px;
 	border-color : gray;
 }
+
+th{
+	padding-top:5px;
+	padding-bottom:5px;
+}
+
 /* 패스워드 텍스트 박스 */
 .inputBox_pw{
 	width : 247px;
@@ -206,6 +226,11 @@
 	font-size:17px;
 	border-radius : 5px;
 	border-color : gray;
+}
+
+.inputBox_pw:hover{
+	transform:scale(1.1);
+	transition: transform .2s; 
 }
 
 /* 로그인 에러 */
@@ -234,9 +259,8 @@
 .addBtn {
 	text-align : center;
 	width : 247px;
-	padding-top : 20px;
+	padding-top : 10px;
 	padding-bottom : 10px;
-	margin-top : 10px;
 	border-radius : 10px;
 	background-color : greenyellow;
 	font-weight : bold;
@@ -282,10 +306,9 @@
 
 /* 업데이트뷰 폰트 */ 
 .updfont{
-	font-family: "Noto Serif KR", serif;
-  	font-optical-sizing: auto;
-  	font-weight: bold;
-  	font-style: normal;
+	font-family: "Dongle", serif;
+	  font-weight: 400;
+	  font-style: normal;
 }
 
 /* 회원탈퇴 버튼 위치 조정 */
@@ -316,17 +339,15 @@
 .member-table th {
     background-color: lightblue;
     color: white;
-    font-family: "Noto Serif KR", serif;
-  	font-optical-sizing: auto;
-  	font-weight: bold;
-  	font-style: normal;
+    font-family: "Dongle", serif;
+	  font-weight: 400;
+	  font-style: normal;
 }
 
 .member-table tr{
-	font-family: "Noto Serif KR", serif;
-  	font-optical-sizing: auto;
-  	font-weight: bold;
-  	font-style: normal;
+	font-family: "Dongle", serif;
+	  font-weight: 400;
+	  font-style: normal;
 }
 .member-table tr:nth-child(even) {
     background-color: #f2f2f2;
@@ -390,10 +411,9 @@
     border: 1px solid lightblue;
     border-radius: 5px;
     color: lightblue;
-   	font-family: "Noto Serif KR", serif;
-  	font-optical-sizing: auto;
-  	font-weight: bold;
-  	font-style: normal;
+   	font-family: "Dongle", serif;
+	  font-weight: 400;
+	  font-style: normal;
 }
 
 .sort-btn.active {
@@ -413,7 +433,11 @@
 				MENU CSS 
  
  ****************************************/
-
+.dongle-regular {
+  font-family: "Dongle", serif;
+  font-weight: 400;
+  font-style: normal;
+}
 
 .nanum-gothic-regular {
   font-family: "Nanum Gothic", serif;
@@ -442,40 +466,37 @@
 	color:white;
 }
 
+#addmBack{
+	background-color : lightblue;	
+}
+#mklistBack{
+	background-color: #e4f2f7;
+}
+#rdmakeBack{
+	background-color: white;
+}
+#myCouresBack{
+	background-color: #e4f2f7;
+}
 .menubar span{
-	font-family: "Noto Serif KR", serif;
-  	font-weight: bold;
-  	font-style: normal;
-	font-size:40px;
+	font-family: "Dongle", serif;
+	font-weight: 400;
+	font-style: normal;
 }
 
 /* 메뉴 구성 */
-#menublock{
-   margin:0 20px 0 20px;
-   display:flex;
-   justify-content : space-between;   
-}
+
 
 /* li 가로 정렬 */
-#menublock > ul{
-	display:flex;
-}
 
-/* 메뉴 폰트 */
 #menublock a{
-	margin: 0 30px;
-	color : white;
-	font-family: "Noto Serif KR", serif;
-  	font-optical-sizing: auto;
-  	font-weight: bold;
-  	font-style: normal;
-  	font-size:21px;
+	color:white;
 }
 
 /* 메뉴 호버 */
 #menublock a:hover{
 	transition:2s;
-	color:black !important;
+	color:orange !important;
 }
 
 /* 드롭다운 시작 */
@@ -486,36 +507,39 @@
 }
 /* 드롭다운 서브박스 */
 .dropSub{
-	width: 250px;
+	width: 180px;
 	position:absolute;
-	top:70px;
-	right:-60px;
+	top:30px;
+	right:-50px;
 	height:0;
-	box-shadow: 10px 10px 10px 10px lightblue;
+	box-shadow: 10px 10px 10px 10px rgba(0,0,0,0.3);
   	opacity:0;
-  	background-color: wheat;
-}
+  	background-color:white;
+  }
 
 .dropdown a:hover{
-	color : black;
+	color : orange;
   	translate:1s;
 }
 
 .dropSub a {
+	margin: 0;
 	display:none;
 	text-align:center;
+	width:100%;
 }
 .dropSub a:hover { 
 
 	transition:1s;
 	color:black !important;
+	background-color:white;
 }
 
 
 .dropdown:hover .dropSub { 
-	height: 290px;
-	opacity:1;
-	background-color: wheat;
+	height: 180px;
+	opacity:0.6;
+	background-color: black;
 	transition:1s;
 }
 
@@ -525,10 +549,9 @@
 
 /* 메뉴 닉네임 폰트 */
 .nickfont{
-	font-family: "Noto Serif KR", serif;
-  	font-optical-sizing: auto;
-  	font-weight: bold;
-  	font-style: normal;
+	font-family: "Dongle", serif;
+	font-weight: 400;
+	font-style: normal;
   	font-size:18px;
   	color : black;
 }
@@ -552,7 +575,9 @@
 				Map CSS
  
  ****************************************/
-.map_wrap, .map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
+.mapContainer{width:80%;height:800px;}
+.map_wrap{margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;border-radius:30px; overflow:hidden;}
+	.map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
 .map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#000;text-decoration: none;}
 .map_wrap {position:relative;width:70%;height:500px;}
 #menu_wrap {position:absolute;top:0;left:0;bottom:0;width:250px;margin:10px 0 30px 10px;padding:5px;overflow-y:auto;background:rgba(255, 255, 255, 0.7);z-index: 1;font-size:12px;border-radius: 10px;}
@@ -588,3 +613,399 @@
 #pagination {margin:10px auto;text-align: center;}
 #pagination a {display:inline-block;margin-right:10px;}
 #pagination .on {font-weight: bold; cursor: default;color:#777;}
+.wrap {position: absolute;left: 0;bottom: 40px;width: 288px;height: 132px;margin-left: -144px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
+.wrap * {padding: 0;margin: 0;}
+.wrap .info {width: 286px;height: 120px;border-radius: 5px;border-bottom: 2px solid #ccc;border-right: 1px solid #ccc;overflow: hidden;background: #fff;}
+.wrap .info:nth-child(1) {border: 0;box-shadow: 0px 1px 2px #888;}
+.info .title {padding: 5px 0 0 10px;height: 30px;background: #eee;border-bottom: 1px solid #ddd;font-size: 18px;font-weight: bold;}
+.info .close {position: absolute;top: 10px;right: 10px;color: #888;width: 17px;height: 17px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');}
+.info .close:hover {cursor: pointer;}
+.info .body {position: relative;overflow: hidden;}
+.info .desc {position: relative;margin: 13px 0 0 90px;height: 75px;}
+.desc .ellipsis {overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+.desc .jibun {font-size: 11px;color: #888;margin-top: -2px;}
+.info .img {position: absolute;top: 6px;left: 5px;width: 73px;height: 71px;border: 1px solid #ddd;color: #888;overflow: hidden;}
+.info:after {content: '';position: absolute;margin-left: -12px;left: 50%;bottom: 0;width: 22px;height: 12px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
+.info .link {color: #5085BB;}
+
+/****************************************
+
+				MarkerView CSS
+ 
+ ****************************************/
+	.contentBody{
+		margin-top: 100px; 
+		width:100%;
+	}
+	/* 게시판 작성 뷰 CSS */
+	#board {
+	    width: 80%;
+	    margin: 0 auto;
+	    padding: 20px;
+	    background-color: #f9f9f9;
+	    border-radius: 8px;
+	    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	    font-family: 'Arial', sans-serif;
+	}
+	
+	#board p {
+	    margin: 10px 0;
+	    font-size: 16px;
+	    color: #333;
+	}
+	
+	#board input[type="text"], 
+	#board textarea {
+	    width: 100%;
+	    padding: 10px;
+	    margin: 5px 0;
+	    font-size: 14px;
+	    border: 1px solid #ccc;
+	    border-radius: 4px;
+	    box-sizing: border-box;
+	}
+	
+	#board input[readonly] {
+	    background-color: #e9ecef;
+	    color: #6c757d;
+	}
+	
+	#board textarea {
+	    resize: none;
+	}
+	
+	#board input[type="submit"] {
+	    display: block;
+	    width: 100px;
+	    padding: 12px;
+	    margin-top: 20px;
+	    font-size: 16px;
+	    color: #fff;
+	    background-color: #007bff;
+	    border: none;
+	    border-radius: 4px;
+	    cursor: pointer;
+	    transition: background-color 0.3s ease;
+	}
+	
+	#board input[type="submit"]:hover {
+	    background-color: #0056b3;
+	}
+	
+	.courseList {
+	    display: flex;
+	    align-items: center;
+	    gap: 10px;
+	    margin: 10px 0;
+	    padding: 10px;
+	    background-color: #e3f2fd;
+	    border-radius: 8px;
+	    font-size: 14px;
+	    color: #333;
+	    flex-wrap: wrap;
+	}
+	
+	.courseList span {
+	    display: flex;
+	    align-items: center;
+	    font-size: 14px;
+	    font-weight: bold;
+	    color: #495057;
+	}
+	.date{
+			
+	}
+	.courseList span i {
+	    margin: 0 5px;
+	    color: #007bff;
+	}
+	
+	.courseList span:last-child i {
+	    display: none;
+	}
+	
+	.placeholder {
+	    color: #6c757d;
+	}
+
+	.listBox{
+		width:250px;
+		height:800px;
+		position: relative;
+		overflow:hidden;
+		
+	}
+	.listBox > *, ul{
+		padding:0;
+		margin:0 auto;
+	}
+	.listbody{
+		border:1px solid #000000;
+		height:100%;
+		position:relative;
+		overflow-y:auto;
+	}
+	.pointName{
+		text-decoration: none;
+		color:#0B0B3B;
+		font-weight:700;
+	}
+	.pointName:hover{
+		color:#0000FF;
+	}
+	
+	.tablist{
+		list-style:none;
+		display:flex;
+		justify-content:space-between;
+	}
+	.tablist button{
+		width:100%;
+	}
+	.tablist div{
+		width:30%;
+		margin:0 10px 0 10px;
+		border:1px solid rgba(0,0,0,0.3);
+	}
+	.markerList{
+		display:flex;
+		flex-direction:column;
+		list-style : none;
+	}
+	.listBox{
+		width:250px;
+		height:800px;
+		position: relative;
+		overflow:hidden;
+		
+
+	}
+	.listBox > *, ul{
+		padding:0;
+		margin:0 auto;
+	}
+	.listbody{
+		height:97%;
+		position:relative;
+		overflow-y:auto;
+	}
+	
+	.mylistBox{
+		width:250px;
+		height:800px;
+		position: relative;
+		overflow:hidden;
+		
+		border:1px solid black;
+	}
+	.mylistBox > *, ul{
+		padding:0;
+		margin:0 auto;
+	}
+	.mylistbody{
+		height:100%;
+		position:relative;
+		overflow-y:auto;
+	}
+	.listCh{
+		width:80%;
+		margin-top: 10px;
+		margin-left: 20px;
+		margin-bottom: 10px;
+	}
+	.listblock{
+		position:absolute;
+		top:0;
+		left:0;
+	}
+	div ul{
+		list-style:none;
+	}
+	.btnList{
+		display:flex;
+		justify-content:space-between;
+	}
+	.btnList a{
+		color:rgb(2,7,21);
+		text-align:center;
+		text-decoration:none;
+		background-color:#E6E6E6;
+		padding:3px;
+		border-radius:10px;
+	}
+	.cateText{
+		font-size:11px;
+	}
+	.contentHead{
+		display:flex;
+		justify-content:center;
+		align-items:center;
+		width:100%;
+		height:180px;
+		text-align:center;
+		line-height:150px;
+	}
+	#mklistHead{	
+		background-color:rgba(255, 228, 225, 0.3);
+	}
+	.mapBox{
+		width:70%;
+		border-radius:20px;
+		overflow:hidden;
+		box-shadow : 5px 5px 5px 5px rgba(0,0,0,0.4);
+	}
+	.contentBox{
+		width:25%;
+	}	
+	.headTitle{
+		font-size:30px;
+		font-family: "Dongle", serif;
+	    font-weight: 400;
+	    font-style: normal;
+	}
+	.rdmkTitle, .rdallTitle{
+		color:#003458;
+	}
+
+	.mklistTitle{
+		color:#003458;
+	}
+	.addmTitle{
+		color:white;
+	}	
+	.fa-route{
+		color:white;
+	}
+	.fa-solid{
+		font-size:45px;
+	}
+	.fa-location-dot{
+		color:#003458;
+	}
+	.description{
+		margin-top:70px;
+		color:gray;
+		font-size:12px;
+	}
+	.inputForm{
+		height:70%;
+		border:1px solid rgba(0,0,0,0.3);
+		border-radius:25px;
+	}
+	.inputForm table tr{
+		height:40px;
+	}
+	#urlText ~ a > .fa-solid{
+		font-size:15px;
+		color:#006400;
+	}
+	#sendData{
+		width:70px;
+		height:30px;
+	}
+	.countRow{
+		font-size:12px;
+		color:gray;
+	}
+	.tabcontainer{
+    	display:flex;
+    	justify-content:center;
+    	margin-top:100px;
+    	margin-bottom:50px;
+    }
+    .tabBody{
+    	width:50%;
+    	display:flex;
+    	justify-content:center;
+    }
+    .tabBody span{
+    	margin:0 20px;
+    	width: 100px;
+    	height:50px;
+    	line-height:50px;
+    	text-align:center;
+    	position:relative;
+    	border:1px solid rgba(0,0,0,0.3);
+    	border-radius:10px;
+   		font-family: "Dongle", serif;
+  		font-weight: 400;
+  		font-style: normal;
+    }
+    .tabBody span:hover{
+    	background-color:gray;
+    }
+    .tabBody span img{
+    	width:50%;
+    	opacity:0.2;
+    	position:absolute;
+    	top:0;
+    	left:26px;
+    }
+    
+    .courseBody{
+    	margin:0 15px;
+    	padding:0;
+    	display:flex;
+    	width:50%;
+    }
+    .courseList{
+    	height:800px;
+    	overflow-y:auto;
+    }
+    
+    .placesList{
+    	height:100%;
+    	
+    }
+
+    .category, .addr{
+		font-size:11px;
+	}
+	#category_tu{
+		background-color:lightblue;
+		border-radius:10px;
+		color:white;
+		width:30px;
+		text-align:center;
+	}
+	#category_rs{
+		background-color:orange;
+		border-radius:10px;
+		color:white;
+		width:30px;
+		text-align:center;
+	}
+	#category_ht{
+		background-color:#0B3B24;
+		border-radius:10px;
+		color:white;
+		width:30px;
+		text-align:center;
+	}
+	.channel{
+    	margin:0 auto;
+    	display:flex;
+    	justify-content:center;
+    	align-items:center;
+    	position:absolute;
+    	top:0;
+    	left:0;
+    	height: 70px;
+    	width:100%;
+    	background-color: rgba(0,0,0,0.3);
+    	z-index:10;	
+    }
+    .channel div{
+    	margin: 0 30px;
+    	color:white;
+    	height:40%;
+    }
+    
+    
+    .footer{
+		margin:100px 0 50px 0;		
+	}
+	.footer a{
+		color:gray;
+		font-size:14px;
+	}

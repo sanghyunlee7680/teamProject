@@ -1,0 +1,343 @@
+@charset "UTF-8";
+*{ 
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+
+.container{
+	width : 1536px;
+	margin: 0 auto;
+}
+/***************************************
+
+				HOME ( index.jsp ) 
+
+****************************************/
+
+.content2{
+	width:1536px;
+	height:100%;
+	text-align:center;
+	line-height:500px;
+}
+
+/***************************************
+
+				MEMBER
+
+****************************************/
+
+.loginForm{
+	display : flex;
+	justify-content : center;
+	align-items : center;
+}
+/* 폼 박스 제공 */
+.loginBox{
+	border:none;
+	position:absolute;
+	top:230px;
+	left: 750px;
+	width : 370px;
+	border-radius : 25px;
+	padding : 50px;
+	margin : 20px;
+	box-shadow: 10px 10px 10px 10px gray;
+	background-color : white;
+}
+
+/* 로그인 배너 */
+.login{
+	padding : 10px;
+}
+
+/* 배너 글자 크기 및 위치 조정*/
+.login > h3 {	
+	text-align : center;
+	font-family: "Noto Serif KR", serif;
+  	font-optical-sizing: auto;
+  	font-weight: bold;
+  	font-style: normal;
+  	font-size:30px;
+}
+/* 테이블 크기 및 정렬 */
+.tablebox{
+	width : 100%;
+	text-align : left;
+	padding : 10px;
+}
+/* 이메일 텍스트 박스 */
+.inputBox{
+	width : 100px;
+	height : 50px;
+	font-size:17px;
+	border-radius : 5px;
+	border-color : gray;
+	
+}
+/* 패스워드 텍스트 박스 */
+.inputBox_pw{
+	width : 247px;
+	height : 50px;
+	font-size:17px;
+	border-radius : 5px;
+	border-color : gray;
+}
+
+/* 로그인 에러 */
+.loginError{
+	text-align : center;
+	color : red;
+	padding-bottom : 5px;
+}
+
+/* 로그인 버튼 */
+.submitBtn{
+	width : 247px;
+	padding-top : 10px;
+	padding-bottom : 10px;
+	border-radius : 10px;
+	border:none;
+	background-color : skyblue;
+	color : white;
+	text-align : center;
+	font-weight : bold;
+	font-size : 20px;
+	cursor: pointer;
+}
+
+/* 회원가입 버튼 */
+.addBtn {
+	text-align : center;
+	width : 247px;
+	padding-top : 20px;
+	padding-bottom : 10px;
+	margin-top : 10px;
+	border-radius : 10px;
+	background-color : greenyellow;
+	font-weight : bold;
+	font-size : 20px;
+	cursor : pointer;
+	color : white;
+}
+/* 회원가입 a 태그 */
+.addBtn > a {
+	color : white;
+}
+/* 버튼 div */
+.btnBox{
+	padding-top : 5px;
+	padding-bottom : 5px;
+}
+
+/* 중복 확인 버튼 */
+#checkBtn{
+	text-align : center;
+	width : 123px;
+	padding-top : 5px;
+	padding-bottom : 5px;
+	margin-top : 10px;
+	border-radius : 10px;
+	background-color : gray;
+	font-weight : bold;
+	font-size : 20px;
+	cursor : pointer;
+	color : white;
+}
+
+/* 삭제 버튼 */
+#deleteBtn{
+	color:gray;
+}
+
+/* 삭제 버튼 호버 */
+#deleteBtn:hover{
+	color:red;
+	transition:1s;
+}
+
+/* 업데이트뷰 폰트 */ 
+.updfont{
+	font-family: "Noto Serif KR", serif;
+  	font-optical-sizing: auto;
+  	font-weight: bold;
+  	font-style: normal;
+}
+
+/* 회원탈퇴 버튼 위치 조정 */
+.delbox{
+	width:247px;
+	text-align:right;
+}
+
+/****************************************
+
+				MENU
+ 
+ ****************************************/
+
+
+.nanum-gothic-regular {
+  font-family: "Nanum Gothic", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+/* 메뉴 상단 바 */
+.menuContainer{
+   width:1536px;   
+   height: 70px;
+   border-radius : 5px 5px 10px 10px;
+   line-height:70px;
+   text-align:center;
+   text-decoration:none;
+   background-color:lightblue;
+}
+
+/* 메뉴 전체 바 */
+.menubar{
+	width : 1536px;
+	text-align : center;
+	height : 300px;
+	background-color : white;
+	border-radius:5px 5px 10px 10px;	
+	line-height : 180px;
+	color:white;
+}
+#addmBack{
+	background-color : lightblue;	
+}
+#mklistBack{
+	background-color: #e4f2f7;
+}
+#rdmakeBack{
+	background-color: white;
+}
+#myCouresBack{
+	background-color: #e4f2f7;
+}
+/* 메뉴 구성 */
+#menublock{
+   margin:0 20px 0 20px;
+   display:flex;
+   justify-content : space-between;   
+}
+
+/* li 가로 정렬 */
+#menublock > ul{
+	display:flex;
+}
+
+/* 메뉴 폰트 */
+#menublock a{
+	margin: 0 30px;
+	color : white;
+	font-family: "Noto Serif KR", serif;
+  	font-optical-sizing: auto;
+  	font-weight: bold;
+  	font-style: normal;
+  	font-size:21px;
+}
+
+/* 메뉴 호버 */
+#menublock a:hover{
+	transition:2s;
+	color:black !important;
+}
+
+/* 드롭다운 시작 */
+.dropdown { 
+	  display: inline-block;
+	  text-align: center;	
+	  position:relative;
+}
+/* 드롭다운 서브박스 */
+.dropSub{
+	width: 250px;
+	position:absolute;
+	top:70px;
+	right:-60px;
+	height:0;
+	box-shadow: 10px 10px 10px 10px lightblue;
+  	opacity:0;
+  	background-color: wheat;
+  	z-index:100;
+}
+
+.dropdown a:hover{
+	color : black;
+  	translate:1s;
+}
+
+.dropSub a {
+	display:none;
+	text-align:center;
+}
+.dropSub a:hover { 
+
+	transition:1s;
+	color:black !important;
+}
+
+
+.dropdown:hover .dropSub { 
+	height: 290px;
+	opacity:1;
+	background-color: wheat;
+	transition:1s;
+}
+
+.dropdown:hover .dropSub a{
+	display:block;
+}
+
+/* 메뉴 닉네임 폰트 */
+.nickfont{
+	font-family: "Noto Serif KR", serif;
+  	font-optical-sizing: auto;
+  	font-weight: bold;
+  	font-style: normal;
+  	font-size:18px;
+  	color : black;
+}
+
+/* map 관련 css */
+.map_wrap, .map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
+.map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#000;text-decoration: none;}
+.map_wrap {position:relative;width:70%;height:500px;}
+#menu_wrap {position:absolute;top:0;left:0;bottom:0;width:250px;margin:10px 0 30px 10px;padding:5px;overflow-y:auto;background:rgba(255, 255, 255, 0.7);z-index: 1;font-size:12px;border-radius: 10px;}
+.bg_white {background:#fff;}
+#menu_wrap hr {display: block; height: 1px;border: 0; border-top: 2px solid #5F5F5F;margin:3px 0;}
+#menu_wrap .option{text-align: center;}
+#menu_wrap .option p {margin:10px 0;}  
+#menu_wrap .option button {margin-left:5px;}
+#placesList li {list-style: none;}
+#placesList .item {position:relative;border-bottom:1px solid #888;overflow: hidden;cursor: pointer;min-height: 65px;}
+#placesList .item span {display: block;margin-top:4px;}
+#placesList .item h5, #placesList .item .info {text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
+#placesList .item .info{padding:10px 0 10px 55px;}
+#placesList .info .gray {color:#8a8a8a;}
+#placesList .info .jibun {padding-left:26px;background:url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_jibun.png) no-repeat;}
+#placesList .info .tel {color:#009900;}
+#placesList .item .markerbg {float:left;position:absolute;width:36px; height:37px;margin:10px 0 0 10px;background:url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png) no-repeat;}
+#placesList .item .marker_1 {background-position: 0 -10px;}
+#placesList .item .marker_2 {background-position: 0 -56px;}
+#placesList .item .marker_3 {background-position: 0 -102px}
+#placesList .item .marker_4 {background-position: 0 -148px;}
+#placesList .item .marker_5 {background-position: 0 -194px;}
+#placesList .item .marker_6 {background-position: 0 -240px;}
+#placesList .item .marker_7 {background-position: 0 -286px;}
+#placesList .item .marker_8 {background-position: 0 -332px;}
+#placesList .item .marker_9 {background-position: 0 -378px;}
+#placesList .item .marker_10 {background-position: 0 -423px;}
+#placesList .item .marker_11 {background-position: 0 -470px;}
+#placesList .item .marker_12 {background-position: 0 -516px;}
+#placesList .item .marker_13 {background-position: 0 -562px;}
+#placesList .item .marker_14 {background-position: 0 -608px;}
+#placesList .item .marker_15 {background-position: 0 -654px;}
+#pagination {margin:10px auto;text-align: center;}
+#pagination a {display:inline-block;margin-right:10px;}
+#pagination .on {font-weight: bold; cursor: default;color:#777;}

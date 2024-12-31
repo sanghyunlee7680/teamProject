@@ -7,139 +7,50 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="/FoodTrip/resources/css/menu.css"/>
+<link rel="stylesheet" href="/FoodTrip/resources/css/menu.css?version=3"/>
+<link rel="stylesheet" href="/FoodTrip/resources/css/Marker.css?version=3"/>
+<script src="https://kit.fontawesome.com/7676881a65.js" crossorigin="anonymous"></script>
 <style>
-	.contain{
-		display:flex;
-	}
-	.listBox{
-		width:250px;
-		height:800px;
-		position: relative;
-		overflow:hidden;
-		background-color: #EFF2FB;
-		border:1px solid black;
-	}
-	.listBox > *, ul{
-		padding:0;
-		margin:0 auto;
-	}
-	.listbody{
-		height:100%;
-		position:relative;
-		overflow-y:auto;
-	}
-	.tablist{
-		list-style:none;
-		display:flex;
-		justify-content:space-between;
-	}
-	.tablist button{
-		width:100%;
-	}
-	.tablist div{
-		width:30%;
-		margin:0 10px 0 10px;
-		border:1px solid rgba(0,0,0,0.3);
-	}
-	.markerList{
-		display:flex;
-		flex-direction:column;
-		list-style : none;
-	}
-	.listCh{
-		width:80%;
-		margin-top: 10px;
-		margin-left: 20px;
-		margin-bottom: 10px;
-	}
-	.listblock{
-		position:absolute;
-		top:0;
-		left:0;
-	}
-	div ul{
-		list-style:none;
-	}
-	.btnList{
-		display:flex;
-		justify-content:space-between;
-	}
-	.btnList a{
-		color:rgb(2,7,21);
-		text-align:center;
-		text-decoration:none;
-		background-color:#E6E6E6;
-		padding:3px;
-		border-radius:10px;
-	}
-	.pointName{
-		font-weight:700;
-		text-decoration:none;
-		color:black;
-	}
-	.category{
-		font-size:11px;
-	}
-	.wrap {position: absolute;left: 0;bottom: 40px;width: 288px;height: 132px;margin-left: -144px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
-    .wrap * {padding: 0;margin: 0;}
-    .wrap .info {width: 286px;height: 120px;border-radius: 5px;border-bottom: 2px solid #ccc;border-right: 1px solid #ccc;overflow: hidden;background: #fff;}
-    .wrap .info:nth-child(1) {border: 0;box-shadow: 0px 1px 2px #888;}
-    .info .title {padding: 5px 0 0 10px;height: 30px;background: #eee;border-bottom: 1px solid #ddd;font-size: 18px;font-weight: bold;}
-    .info .close {position: absolute;top: 10px;right: 10px;color: #888;width: 17px;height: 17px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');}
-    .info .close:hover {cursor: pointer;}
-    .info .body {position: relative;overflow: hidden;}
-    .info .desc {position: relative;margin: 13px 0 0 90px;height: 75px;}
-    .desc .ellipsis {overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
-    .desc .jibun {font-size: 11px;color: #888;margin-top: -2px;}
-    .info .img {position: absolute;top: 6px;left: 5px;width: 73px;height: 71px;border: 1px solid #ddd;color: #888;overflow: hidden;}
-    .info:after {content: '';position: absolute;margin-left: -12px;left: 50%;bottom: 0;width: 22px;height: 12px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
-    .info .link {color: #5085BB;}
+	
 </style>
 </head>
 <body>
-
-	<%@ include file="../menu/menu.jsp" %>
-	<!-- 
-		<ul>
-			<li>로 구현할 때 
-			전체 리스트로 쭉 뿌리고 카테고리에 따라 분류	
-	 -->
-	<h2>마커 리스트</h2>
-<div class="contain">
-<!-- 	
-	<div class="listBox">
-		<ul class="tablist">
-			<div class="tourtab" id="tab">관광지</div>
-			<div class="resttab" id="tab">식당</div>
-			<div class="staytab" id="tab">숙소</div>
-		</ul>
-		<ul class="markerList">
-		
-		</ul>
+<div class="container">
+	<div class="menubar" id="mklistBack">
+		<%@ include file="../menu/menu.jsp" %>
+		<i class="fa-solid fa-location-dot" id="headIcon"></i>&nbsp;
+		<span class="headTitle mklistTitle">전체 마커 리스트</span>	
 	</div>
-	 -->
-	<div class="listBox">
-		<div class="tablist">
-			<button class="tourtab" id="TU">관광지</button>
-			<button class="resttab" id="RS">식당</button>
-			<button class="staytab" id="HT">숙소</button>
-		</div>	
-		<div class="listbody">
-			<div class="listblock">
-				<ul class="mklist">
-
-				</ul>
+	<div class="description">
+		<p> * 서버에 저장된 전체 마커를 확인할 수 있습니다.
+		<p> * 카테고리 분류는 3가지입니다. (관광지 / 식당 / 숙소)
+		<p> * 카테고리를 클릭하면 해당하는 마커 전체가 지도에 표시됩니다.
+		<p> * 마커의 위치 확인 및 해당하는 마커를 수정할 수 있습니다.
+	</div>
+	<div class="contentBody">
+		<div class="listBox">
+			<div class="tablist">
+				<button class="tourtab" id="TU">관광지</button>
+				<button class="resttab" id="RS">식당</button>
+				<button class="staytab" id="HT">숙소</button>
+			</div>	
+			<div class="listbody">
+				<div class="listblock">
+					<ul class="mklist">
+	
+					</ul>
+				</div>
 			</div>
 		</div>
+		<div id=map style="width:100%;height:800px;">
+			<!-- 지도 공간  -->
+			
+		</div> 
 	</div>
-	<div id=map style="width:100%;height:800px;">
-		<!-- 지도 공간  -->
-		
-	</div> 
+	<%@ include file="../footer/footer.jsp" %>
 </div>		
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a8fb3e9990ea2c741f7c154e957f99be"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ca31d06e7d0446fcb67025d7d71b84e6"></script>
 <script>
 	//맵 변수
 	var mapContainer;
@@ -181,7 +92,7 @@
 		"pointName":"",
 		"phone":"",
 		"address":"",
-		"description":""
+		"urltext":""
 	};
 
 	//탭 버튼에 이벤트 할당
@@ -231,7 +142,7 @@
 				"pointName":markerlist[index].pointName,
 				"phone":markerlist[index].phone,
 				"address": markerlist[index].address,
-				"description":markerlist[index].description
+				"urltext":markerlist[index].urlText
 			};
 
 			dtoList.push(dtoObj);
@@ -256,7 +167,7 @@
 	//리스트 만들기
 	function listMake(list, data){
 		//console.log(data.description);
-		list.innerHTML="<a href='"+data.description+"'class='pointName' target='_blank'>"
+		list.innerHTML="<a href='"+data.urltext+"'class='pointName' target='_blank'>"
 		+ data.pointName + "</a><div class='category'>"+data.category
 		+"</div><br>"
 		//
@@ -264,12 +175,12 @@
 		div.setAttribute("class", "btnList");
 		div.innerHTML = "<a href='/FoodTrip/marker/markerUpdate?id="+data.markerId+"'>수정</a>";
 		
-		var btn = document.createElement('button');
 		var hr = document.createElement('hr');
+/*		var btn = document.createElement('button');
 		btn.addEventListener("click", () => addMarker(data));
 		btn.innerHTML = "등록";
 		div.appendChild(btn);
-		
+*/
 		list.appendChild(div);
 		list.appendChild(hr);
 		//list.innerHTML += `</div>`;
@@ -284,14 +195,16 @@
 		//console.log(circleMarkers);
 		var placePosition = new kakao.maps.LatLng(data.pointY, data.pointX);
 		var imgfile;
-		if(img=="카페"|| img=="간식"){
-			imgfile = "disert";
-		}else if(img=="치킨"){
+		if(img == "치킨"){
 			imgfile = "chicken";
-		}else if(img=="분식"){
-			imgfile = "tteok";
-		}else{
-			imgfile = cate;
+		}else if(img == "양식"){
+			imgfile = "pasta";
+		}else if(img == "중식"){
+			imgfile = "chinese";
+		}else if(img == "카페" || img == "간식"){
+			imgfile = "disert";
+		}else if(img == "분식"){
+			imgfile = "snack";
 		}
 		
 		var imageSrc = "/FoodTrip/resources/images/"+imgfile+".png", // 마커 이미지 url, 스프라이트 이미지를 씁니다	
@@ -323,7 +236,29 @@
 		var placePosition = new kakao.maps.LatLng(data.pointY, data.pointX);
 		bounds = new kakao.maps.LatLngBounds();
 		bounds.extend(placePosition);
-		var imageSrc = "/FoodTrip/resources/images/"+cate+".png" , // 마커 이미지 url, 스프라이트 이미지를 씁니다
+		var cateFull = data.category;
+		var str1 = cateFull.replaceAll('>', ',');
+		var str2 = str1.split(',');
+		var cateStr = str2[1].trim();
+		
+		var imgfile;
+		
+		if(cate == "RS"){
+			if(cateStr == "치킨"){
+				imgfile = "chicken";
+			}else if(cateStr == "양식"){
+				imgfile = "pasta";
+			}else if(cateStr == "중식"){
+				imgfile = "chinese";
+			}else if(cateStr == "카페" || cateStr == "간식"){
+				imgfile = "disert";
+			}else if(cateStr == "분식"){
+				imgfile = "snack";
+			}
+		}else{
+			imgfile = cate;
+		}
+		var imageSrc = "/FoodTrip/resources/images/"+imgfile+".png" , // 마커 이미지 url, 스프라이트 이미지를 씁니다
 	        imageSize = new kakao.maps.Size(36, 37),  // 마커 이미지의 크기
 	        imgOptions =  {	      
 	            offset: new kakao.maps.Point(13, 37) // 마커 좌표에 일치시킬 이미지 내에서의 좌표
@@ -346,6 +281,7 @@
 		kakao.maps.event.addListener(marker, 'click', function () {
 	    	// 클릭된 마커를 중심으로 원을 그리도록 함수 호출
 	    	getRangeRestTour(marker, data);
+	    	createOverLay(marker,data);
 	    	//filterMarkersByCircle(oneMarker, data);
 	    	console.log("1. click ! ");
 		});
@@ -414,7 +350,7 @@
             '           </div>' + 
             '            <div class="desc">' + 
             '                <div class="ellipsis">'+ data.address +'</div>' +  
-            '                <div><a href='+ data.description  +' target="_blank" class="link">사이트이동</a></div>' + 
+            '                <div><a href='+ data.urltext  +' target="_blank" class="link">사이트이동</a></div>' + 
             '            </div>' + 
             '        </div>' + 
             '    </div>' +    
@@ -464,6 +400,11 @@
 		var me = event.target.id;
 		console.log(me);
 		rmAllMarker(baseMarkers);
+		rmAllMarker(circleMarkers);
+		closeOverlayAll();
+		if (activeCircle) {
+	        activeCircle.setMap(null);
+	    }
 		//rmCircleMarker();
 		for(var i=0; i<dtoList.length; i++)
 		{

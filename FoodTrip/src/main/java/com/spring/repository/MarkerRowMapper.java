@@ -20,9 +20,8 @@ public class MarkerRowMapper implements RowMapper<Marker>{
 		marker.setPointName(rs.getString(6));
 		marker.setPhone(rs.getString(7));
 		marker.setAddress(rs.getString(8));
-		marker.setDescription(rs.getString(9));
-		marker.setImageName(rs.getString(10));
-		
+		marker.setUrlText(rs.getString(9));
+		marker.setQrcode(rs.getString(10));
 		return marker;
 	}
 

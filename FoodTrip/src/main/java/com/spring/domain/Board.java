@@ -1,47 +1,58 @@
 package com.spring.domain;
 
-import org.springframework.web.multipart.MultipartFile;
+import java.sql.Timestamp;
 
 public class Board {
 
 	private long brdNum;         	// 게시글 번호 (Primary Key)
     private long parentNum;     	// 부모 게시글 번호 (null이면 최상위 게시글)
     private String nickName;       	// 작성자 이메일
+    private String roadId;			// 코스 id
     private String title;        	// 게시글 제목
     private String content;      	// 게시글 내용
     private String createTime;		// 작성 날짜 및 시간
     private String ip;          	// 작성자 IP 주소
-    private int likes;     		  	// 좋아요 수
+    private int likes;       		// 좋아요 수
     private int views;      		// 조회 수
     private int depth;      		// 계층 깊이 (1: 게시글, 2: 댓글, 3: 답글)
     private String updateDay;		// 게시글 수정 날짜
-    private String path;       	 	// 댓글 계층 구조를 나타내는 경로
-    private MultipartFile image;	// 이미지
-    private String fileName;		// 파일명
+    private String path;         	// 댓글 계층 구조를 나타내는 경로
 
 	public Board() {}
     
-	// Getter & Setter
-
-	public String getFileName() {
-		return fileName;
+	public Board(long brdNum, long parentNum, String nickName, String title, String content, String createTime,
+			String ip, int likes, int views, int depth, String updateDay, String path) {
+		super();
+		this.brdNum = brdNum;
+		this.parentNum = parentNum;
+		this.nickName = nickName;
+		this.title = title;
+		this.content = content;
+		this.createTime = createTime;
+		this.ip = ip;
+		this.likes = likes;
+		this.views = views;
+		this.depth = depth;
+		this.updateDay = updateDay;
+		this.path = path;
 	}
 	
-	public void setFileName(String fileName) {
-		this.fileName = fileName;
-	}
-	public MultipartFile getImage() {
-		return image;
-	}
-
-	public void setImage(MultipartFile image) {
-		this.image = image;
-	}
-	public String getPath() {
-		return path;
+    public Board(long brdNum, String nickName, String title, String createTime, int likes, int views) {
+		this.brdNum = brdNum;
+		this.nickName = nickName;
+		this.title = title;
+		this.createTime = createTime;
+		this.likes = likes;
+		this.views = views;
 	}
 
-	public void setPath(String path) {
+	// Getter & Setter
+
+    public String getPath() {
+    	return path;
+    }
+    
+    public void setPath(String path) {
     	this.path = path;
     }
     public String getUpdateDay() {
@@ -73,6 +84,14 @@ public class Board {
 
 	public void setNickName(String nickName) {
 		this.nickName = nickName;
+	}
+
+	public String getRoadId() {
+		return roadId;
+	}
+
+	public void setRoadId(String roadId) {
+		this.roadId = roadId;
 	}
 
 	public String getTitle() {

@@ -2,6 +2,8 @@ package com.spring.service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,8 +17,8 @@ public class MarkerServiceImpl implements MarkerService{
 	private MarkerRepository markerRepository;
 	
 	@Override
-	public void markerCreate(Marker marker) {
-		markerRepository.markerCreate(marker);
+	public void markerCreate(List<Marker> list) {
+		markerRepository.markerCreate(list);
 	}
 
 	@Override
