@@ -4,9 +4,17 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<!-- 
 <title>Insert title here</title>
 <link rel="stylesheet" href="/FoodTrip/resources/css/menu.css?version=5"/>
-<link rel="stylesheet" href="/FoodTrip/resources/css/Marker.css?version=5"/>
+<link rel="stylesheet" href="/FoodTrip/resources/css/Marker.css?version=5"/> -->
+<link rel="stylesheet" href="/FoodTrip/resources/css/menu.css?version=132"/>
+    <link href="/FoodTrip/resources/css/bootstrap.min.css?version=132" rel='stylesheet' type='text/css' /><!-- bootstrap css -->
+    <link href="/FoodTrip/resources/css/css_slider.css?version=131" rel='stylesheet' type='text/css' /><!-- custom css -->
+	<link href="/FoodTrip/resources/css/style.css?version=92" type="text/css" rel="stylesheet" media="all">
+    <script src="https://kit.fontawesome.com/08b7540d84.js" crossorigin="anonymous"></script><!-- fontawesome css -->
+	<!-- //css files -->
+	<title>Welcome to FoodTrip</title>
 <style>
 
 	.message{

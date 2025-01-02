@@ -70,8 +70,8 @@ public class BoardServiceImpl implements BoardService {
     }
 
     // 댓글/대댓글 삭제
-    public void deleteComment(long commentId) {
-        boardRepository.deleteComment(commentId);
+    public void deleteComment(long commentId,int admin) {
+        boardRepository.deleteComment(commentId, admin);
     }
     // 댓글 조회 메서드
     public List<Board> getCommentsByBoardId(long boardId) {

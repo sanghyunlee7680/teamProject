@@ -445,7 +445,6 @@ th{
   font-style: normal;
 }
 /* 메뉴 상단 바 */
-
 .menuContainer{
    width:1536px;   
    height: 70px;
@@ -498,54 +497,6 @@ th{
 #menublock a:hover{
 	transition:2s;
 	color:orange !important;
-}
-
-/* 드롭다운 시작 */
-.dropdown { 
-	  display: inline-block;
-	  text-align: center;	
-	  position:relative;
-}
-/* 드롭다운 서브박스 */
-.dropSub{
-	width: 180px;
-	position:absolute;
-	top:30px;
-	right:-50px;
-	height:0;
-	box-shadow: 10px 10px 10px 10px rgba(0,0,0,0.3);
-  	opacity:0;
-  	background-color:white;
-  }
-
-.dropdown a:hover{
-	color : orange;
-  	translate:1s;
-}
-
-.dropSub a {
-	margin: 0;
-	display:none;
-	text-align:center;
-	width:100%;
-}
-.dropSub a:hover { 
-
-	transition:1s;
-	color:black !important;
-	background-color:white;
-}
-
-
-.dropdown:hover .dropSub { 
-	height: 180px;
-	opacity:0.6;
-	background-color: black;
-	transition:1s;
-}
-
-.dropdown:hover .dropSub a{
-	display:block;
 }
 
 /* 메뉴 닉네임 폰트 */
@@ -853,7 +804,7 @@ th{
 		width:70%;
 		border-radius:20px;
 		overflow:hidden;
-		box-shadow : 5px 5px 5px 5px rgba(0,0,0,0.4);
+		
 	}
 	.contentBox{
 		width:25%;
@@ -947,7 +898,7 @@ th{
     	margin:0 15px;
     	padding:0;
     	display:flex;
-    	width:50%;
+    	width:25%;
     }
     .courseList{
     	height:800px;

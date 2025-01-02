@@ -6,49 +6,48 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<!-- 
 <link rel="stylesheet" href="/FoodTrip/resources/css/menu.css?version=7"/>
 <link rel="stylesheet" href="/FoodTrip/resources/css/Marker.css?version=5"/>
+ -->
+ 	<link href="/FoodTrip/resources/css/bootstrap.min.css?version=132" rel='stylesheet' type='text/css' /><!-- bootstrap css -->
+	<link href="/FoodTrip/resources/css/style.css?version=92" type="text/css" rel="stylesheet" media="all">
+    <script src="https://kit.fontawesome.com/08b7540d84.js" crossorigin="anonymous"></script><!-- fontawesome css -->
+	<!-- //css files -->
+	<title>Welcome to FoodTrip</title>
+	
 <script src="https://kit.fontawesome.com/7676881a65.js" crossorigin="anonymous"></script>
 </head>
 <body>
-<div class="container">
-	<div class="menubar" id="addmBack">
-		<%@ include file="../menu/menu.jsp" %>
- 		<i class="fa-solid fa-route"></i>
-		<span class="headTitle rdallTitle">전체 코스보기</span>
-	</div>
-	<div class="tabcontainer">
-		<div class="tabBody">
-			<span id="chinese">중식<img src="/FoodTrip/resources/images/tab_chinese.png"/></span>
-			<span id="pasta">파스타<img src="/FoodTrip/resources/images/tab_pasta.png"/></span>
-			<span id="chicken">치킨<img src="/FoodTrip/resources/images/tab_chicken.png"/></span>
-			<span id="snack">분식<img src="/FoodTrip/resources/images/tab_snack.png"/></span>
-			<span id="disert">카페/디저트<img src="/FoodTrip/resources/images/tab_disert.png"/></span>
-		</div>
-	</div>
+<div class="navColorbg">
+	<%@ include file="../menu/menu.jsp" %>	
+</div>
+
 	<div class="contentBody">
 		<div class="mapContainer">
-			<div id=map style="width:100%;height:800px;"></div>
+			<div id=map style="width:100%;height:1000px;"></div>
 		</div>
 		<!-- 코스 리스트 -->
 		<div class="courseBody">
-			<!--<div>
-				<button>중식</button>
-				<button>파스타</button>
-				<button>치킨</button>
-				<button>분식</button>
-				<button>카페/디저트</button>			
+			<div class="tabcontainer">
+				<div class="tabBody">
+					<span id="chinese">중식<img src="/FoodTrip/resources/images/tab_chinese.png"/></span>
+					<span id="pasta">파스타<img src="/FoodTrip/resources/images/tab_pasta.png"/></span>
+					<span id="chicken">치킨<img src="/FoodTrip/resources/images/tab_chicken.png"/></span>
+					<span id="snack">분식<img src="/FoodTrip/resources/images/tab_snack.png"/></span>
+					<span id="disert">카페/디저트<img src="/FoodTrip/resources/images/tab_disert.png"/></span>
+				</div>
 			</div>
-			<h2>생성되어 있는 코스</h2>-->
 			<div class="courseList">
-				<ul id="placesList">
+				<ul id="placeList">
 				
 				</ul>
 			</div>
 		</div>
 	</div>
+	
+
 	<%@ include file="../footer/footer.jsp" %>
-</div>
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ca31d06e7d0446fcb67025d7d71b84e6"></script>
 	<script type="text/javascript">
@@ -90,7 +89,7 @@
 	var admin = "<%=adminCheck%>";
 
 	//	코스 리스트의 부모 요소 (ul태그)
-	var listEl = document.querySelector('#placesList');
+	var listEl = document.querySelector('#placeList');
 	
 	spanChinese.addEventListener("click", () => addList("chinese"));
 	spanPasta.addEventListener("click", () => addList("pasta"));
@@ -188,9 +187,11 @@
 	function createList(data){
 		var courseName = [];
 		for(var j=0; j<data.points.length; j++){
-			courseName[j] = (j+1)+". "+data.points[j].pointName;
+			courseName[j] = "<div class='pointTitle'>"+(j+1)+". "+data.points[j].pointName+"</div><div class='pointCate'>"
+							+ data.points[j].category + "</div><div class='pointAddr'>"
+							+ data.points[j].address + "</div>"
 		}
-		var courseString = courseName.join(" -> ");
+		var courseString = courseName.join("<br>");
 		//console.log(courseAry);
 		var cateStr = data.category;	//저장된 마커의 카테고리
 		var cateHan;
@@ -210,20 +211,21 @@
 		list.setAttribute("id", "cslist");
 		list.innerHTML = '<div>'
 		                +data.description+'</div><h3>'+cateHan+'</h3><div>'
-		                + courseString +'</div><br>'   
+		                + courseString +'</div><br>' 
+		                
 					    if(session !== "null" && admin === "admin"){            
 					          list.innerHTML += '<div><a href="/FoodTrip/road/roadUpdate?id='
-					          +data.roadId+'">수정</a>'+
-					          '<a href="/FoodTrip/road/roadDelete?id='+data.roadId+'">삭제</a></div>'
+					          +data.roadId+'" class="btn btn-secondary">수정</a>'+
+					          '<a href="/FoodTrip/road/roadDelete?id='+data.roadId+'"  class="btn btn-danger">삭제</a></div><br>'
 					    }else if(session !== "null" && admin !== "admin" ){
 					    	var btn = document.createElement('button');
-					    	btn.setAttribute("class", "chbtn");
+					    	btn.setAttribute("class", "btn btn-success");
 							btn.innerHTML = "코스 선택";							    	
 					    	btn.addEventListener("click", () => choiceCourse(data.roadId));
 					    	list.appendChild(btn);
 					    }
 		var vbtn = document.createElement('button');
-    	vbtn.setAttribute("class", "viewbtn");
+    	vbtn.setAttribute("class", "btn btn-info");
     	vbtn.innerHTML = "보기";
     	
     	vbtn.addEventListener("click", function(){
@@ -327,7 +329,7 @@
         '           </div>' + 
         '            <div class="desc">' + 
         '                <div class="ellipsis">'+ data.address +'</div>' +  
-        '                <div><a href='+ data.description  +' target="_blank" class="link">사이트이동</a></div>' + 
+        '                <div><a href='+ data.urlText  +' target="_blank" class="link">사이트이동</a></div>' + 
         '            </div>' + 
         '        </div>' + 
         '    </div>' +    

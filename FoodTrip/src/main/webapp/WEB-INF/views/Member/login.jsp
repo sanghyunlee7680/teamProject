@@ -4,81 +4,66 @@
 <!DOCTYPE html>
 <html>
 <head>
+<%
+	String error = (String)request.getAttribute("error");
+%>
 <!-- css files -->
-<link rel="stylesheet" href="/FoodTrip/resources/css/menu.css?version=1252"/>
-<link href="/FoodTrip/resources/css/bootstrap.min.css?version=1332" rel='stylesheet' type='text/css' /><!-- bootstrap css -->
-<link href="/FoodTrip/resources/css/css_slider.css?version=131" rel='stylesheet' type='text/css' /><!-- custom css -->
-<link href="/FoodTrip/resources/css/style.css?version=912" type="text/css" rel="stylesheet" media="all">
-<script src="https://kit.fontawesome.com/08b7540d84.js" crossorigin="anonymous"></script><!-- fontawesome css -->
+<link rel="stylesheet" href="/FoodTrip/resources/css/member.css?version=122"/>
 <!-- //css files -->
 <meta charset="UTF-8">
 <title>로그인</title>
 </head>
 <body>
-	<!-- header -->
-	<%@ include file="../menu/menu.jsp" %>
-	<!-- //header -->
-	<div class="banner" id="home" >
-		<div class="layer">
-			<div class="container">
-				<div class="row">			
-					<div class="loginForm">
-						<div class="loginBox">
-							<form:form modelAttribute="mem" method="post">
-								<div class="tablebox">
-									<table>
-										<tr>
-											<th>
-												<div class="login">
-													<h3><i class="fa-solid fa-user"></i>&nbsp;로그인</h3>
-												</div>
-											</th>
-										</tr>
-										<tr>
-											<th>
-												<form:input path="email" class="inputBox_pw" placeholder="Email"/>																		
-											</th>			
-										</tr>
-										<tr>
-											<th>
-												<form:input path="password" type="password" class="inputBox_pw" placeholder="Password"/>							
-											</th>
-										</tr>
-										<%
-											String error = (String)request.getAttribute("error");
-											if(error!=null){
-										%>
-										<tr>
-											<th>
-												<div class="loginError">
-													<b>이메일 혹인 비밀번호가 일치하지 않습니다.</b><br/>
-												</div>
-											</th>
-										</tr>	
-										<%} %>
-										<tr>
-											<th>
-												<div class="btnBox">
-													<input type="submit" value="로그인" class="submitBtn">
-												</div>
-											</th>
-										</tr>
-										<tr>
-											<th>
-												<div class="addBtn" onclick="location.href='/FoodTrip/member/email'">
-													<a href="email">회원가입</a>
-												</div>
-											</th>
-										</tr>
-									</table>
-								</div>
-							</form:form>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	<!-- //header -->
+	<div class="page">
+  <div class="container_login">
+	<div class="homeLogo">
+		<a href="/FoodTrip/" class="logo">
+           <img src="/FoodTrip/resources/images/Logo2.png" style="width:120px; height:50px;">               
+        </a>
 	</div>
+    <div class="left">
+      <div class="login">Login</div>
+      <div class="eula">Go on a FoodTrip
+      	<%	if(error!=null){	%>
+        		<b style="color:red; display:block">이메일 혹은 패스워드가 일치하지 않습니다.</b>	
+        <%	}%>
+      </div>
+    </div>
+    <div class="right">
+      <svg viewBox="0 0 320 300">
+        <defs>
+          <linearGradient
+                          inkscape:collect="always"
+                          id="linearGradient"
+                          x1="13"
+                          y1="193.49992"
+                          x2="307"
+                          y2="193.49992"
+                          gradientUnits="userSpaceOnUse">
+            <stop
+                  style="stop-color:#ff00ff;"
+                  offset="0"
+                  id="stop876" />
+            <stop
+                  style="stop-color:#ff0000;"
+                  offset="1"
+                  id="stop878" />
+          </linearGradient>
+        </defs>
+        <path d="m 40,120.00016 239.99984,-3.2e-4 c 0,0 24.99263,0.79932 25.00016,35.00016 0.008,34.20084 -25.00016,35 -25.00016,35 h -239.99984 c 0,-0.0205 -25,4.01348 -25,38.5 0,34.48652 25,38.5 25,38.5 h 215 c 0,0 20,-0.99604 20,-25 0,-24.00396 -20,-25 -20,-25 h -190 c 0,0 -20,1.71033 -20,25 0,24.00396 20,25 20,25 h 168.57143" />
+      </svg>
+      <form:form modelAttribute="mem" class="form" method="post">
+        <label for="email">Email</label>
+        <form:input path="email" type="email" id="email" placeholder="Email"/>
+        <label for="password">Password</label>
+        <form:input path="password" type="password" id="password" placeholder="Password"/>
+        <input type="submit" id="submit" value="로그인">
+      </form:form>
+    </div>
+  </div>
+</div>
+<!-- anime.js 라이브러리 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+<script src="/FoodTrip/resources/js/Login.js?version=32" type="text/javascript"></script>
 </body>
 </html>

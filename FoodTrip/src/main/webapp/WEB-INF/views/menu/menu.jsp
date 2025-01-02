@@ -24,14 +24,14 @@
 	<!-- //google fonts -->
 
 <!-- header -->
-<header>
+<header class="menuHeader">
 	<div class="container">
 		<!-- nav -->
 		<nav class="py-3 d-lg-flex">
 			<div id="logo">
 				<h1>
 					<a href="/FoodTrip/" class="logo">
-						<img src="/FoodTrip/resources/images/Logo2.png" style="width:170px; height:70px;">					
+						<img src="/FoodTrip/resources/images/Logo2.png" style="width:120px; height:50px;">					
 					</a>
 				</h1>
 			</div>
@@ -54,7 +54,7 @@
                         <a href="/FoodTrip/board/boards">커뮤니티</a>
                 </li>
 			</ul>
-			<ul class="menu ml-auto mt-1">
+			<ul class="menu ml-auto mt-1" id="menublock">
 			     <%
 			     if(sessionId != null && sessionId.getNickName() != null && !sessionId.getNickName().isEmpty())
 			     {

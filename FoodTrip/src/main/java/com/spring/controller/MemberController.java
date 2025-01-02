@@ -67,7 +67,7 @@ public class MemberController {
 		
 		System.out.println("뺏지 : " + members.getBadgeName());
 		
-		if(members=	=null) {	
+		if(members==null) {	
 			model.addAttribute("error","true");
 			return "Member/login";
 		}

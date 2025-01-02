@@ -1,34 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ page session="false" %>
 <!DOCTYPE html>
 <html>
-<%
-	String mailCheck = (String)request.getAttribute("true");
-%>
 <head>
+<%
+	String error = (String)request.getAttribute("error");
+%>
 <!-- css files -->
-<link href="/FoodTrip/resources/css/member.css?version=112" rel='stylesheet' type='text/css' />
-<script src="https://kit.fontawesome.com/08b7540d84.js" crossorigin="anonymous"></script><!-- fontawesome css -->
+<link rel="stylesheet" href="/FoodTrip/resources/css/member.css?version=122"/>
 <!-- //css files -->
 <meta charset="UTF-8">
-<title>이메일 인증</title>
+<title>로그인</title>
 </head>
 <body>
 	<div class="page">
-  <div class="container_login">
+  <div class="container">
 	<div class="homeLogo">
 		<a href="/FoodTrip/" class="logo">
            <img src="/FoodTrip/resources/images/Logo2.png" style="width:120px; height:50px;">               
         </a>
 	</div>
     <div class="left">
-      <div class="login">이메일 인증</div>
-      <div class="eula">이메일 인증이 필요합니다.<br> 이메일을 입력해 주세요.
-        <%if(mailCheck!=null){%>
-        	<br>
-			<b class="loginError" style="color:red">가입된 이메일이 존재합니다.</b>
-		<%}%>
-      </div>
+      <div class="login">Login</div>
+      <div class="eula">Go on a FoodTrip</div>
     </div>
     <div class="right">
       <svg viewBox="0 0 320 300">
@@ -53,35 +48,21 @@
         </defs>
         <path d="m 40,120.00016 239.99984,-3.2e-4 c 0,0 24.99263,0.79932 25.00016,35.00016 0.008,34.20084 -25.00016,35 -25.00016,35 h -239.99984 c 0,-0.0205 -25,4.01348 -25,38.5 0,34.48652 25,38.5 25,38.5 h 215 c 0,0 20,-0.99604 20,-25 0,-24.00396 -20,-25 -20,-25 h -190 c 0,0 -20,1.71033 -20,25 0,24.00396 20,25 20,25 h 168.57143" />
       </svg>
-      <form:form modelAttribute="email" class="form" method="post">
+      <form:form modelAttribute="mem" class="form" method="post">
         <label for="email">Email</label>
-        <form:input path="email" id="email" type="email" placeholder="Email" />
-        <button type="button" id="submit" class="submitEmail" >이메일 인증</button>
+        <form:input path="email" type="email" id="email" placeholder="Email"/>
+        <label for="password">Password</label>
+        <form:input path="password" type="password" id="password" placeholder="Password"/>
+        <%	if(error!=null){	%>
+        		<b style="color:red">이메일 혹은 패스워드가 일치하지 않습니다.</b>	
+        <%	}%>
+        <input type="submit" id="submit" value="로그인">
       </form:form>
     </div>
   </div>
 </div>
 <!-- anime.js 라이브러리 -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
-<script src="/FoodTrip/resources/js/Login.js?version=535" type="text/javascript"></script>
-<script>
-	document.addEventListener('DOMContentLoaded', function() {
-    var subBtn = document.querySelector(".submitEmail");
-    console.log("버튼 : " + subBtn);
-
-    subBtn.addEventListener('click', function() {
-    	var emailInput = document.querySelector('input[name="email"]'); // name 속성으로 선택
-    	var emailname = emailInput.value;
-        console.log("함수 : " + emailname);
-        if (!emailname) {
-            console.log("왜안들어가지?");
-            alert("이메일을 입력해주세요.");
-            return;
-        }
-        document.querySelector('.form').submit(); // 폼 제출
-    });
-});	
-</script>
+<script src="/FoodTrip/resources/js/Login.js?version=32" type="text/javascript"></script>
 </body>
-
 </html>

@@ -205,7 +205,7 @@ public class MarkerController {
 		System.out.println("edit execute in");
 		System.out.println(map.get("pointName"));
 		System.out.println(map.get("markerId"));
-		//�쟾泥섎━
+		
 		Marker marker = new Marker();
 		marker.setmarkerId((String)map.get("markerId"));
 		marker.setPointX(Double.parseDouble((String)map.get("pointX")));
@@ -215,10 +215,10 @@ public class MarkerController {
 		marker.setPhone((String)map.get("phone"));
 		marker.setCategory((String)map.get("category"));
 		marker.setUrlText((String)map.get("urlText"));
-
-		//紐⑤뜽�씠�룞
+		System.out.println("marker update : "+marker.getUrlText());
+		
 		markerService.markerUpdate(marker);
-		//由ы꽩
+		
 		
 		return "good";
 	}

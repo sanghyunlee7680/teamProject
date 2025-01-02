@@ -7,17 +7,30 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<!-- 
 <link rel="stylesheet" href="/FoodTrip/resources/css/menu.css?version=3"/>
 <link rel="stylesheet" href="/FoodTrip/resources/css/Marekr.css?version=3"/>
-
+ -->
+    <link href="/FoodTrip/resources/css/bootstrap.min.css?version=132" rel='stylesheet' type='text/css' /><!-- bootstrap css -->
+    <link href="/FoodTrip/resources/css/css_slider.css?version=131" rel='stylesheet' type='text/css' /><!-- custom css -->
+	<link href="/FoodTrip/resources/css/style.css?version=92" type="text/css" rel="stylesheet" media="all">
+    <script src="https://kit.fontawesome.com/08b7540d84.js" crossorigin="anonymous"></script><!-- fontawesome css -->
+	<!-- //css files -->
+	<title>Welcome to FoodTrip</title>
 </head>
 <body>
 	<%
 		Marker marker = (Marker)request.getAttribute("marker");
+		String pointName = null;
+		if(marker != null){
+			pointName = marker.getPointName();
+		}
 	%>
 
+<div class="navColorbg">
+	<%@ include file="../menu/menu.jsp" %>	
+</div>
 <div class="container">
-	<%@ include file="../menu/menu.jsp" %>
 </div>
 	<div class="map_wrap">
 	    <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
@@ -35,43 +48,59 @@
 	        <ul id="placesList"></ul>
 	        <div id="pagination"></div>
 	    </div>
+	    <div class="inputForm">
+		    <form onsubmit="return false;">
+		    	<table>
+					<tr>
+						<td><label>마커ID</label></td>
+						<td><input id="markerId" value="<%=marker.getmarkerId() %>" readOnly/></td>
+					</tr>
+					<tr>
+						<td><label>좌표 X</label></td>
+						<td><input id="pointX" value="<%=marker.getPointX() %>"/></td>
+					</tr>
+					<tr>
+						<td><label>좌표 Y</label></td>
+						<td><input id="pointY" value="<%=marker.getPointY() %>"/></td>
+					</tr>
+					<tr>
+						<td><label>카테고리</label></td>
+						<td><input id="category" value="<%=marker.getCategory() %>"/></td>
+					</tr>
+					<tr>
+						<td><label>장소명</label></td>
+						<td><input id="pointName" value="<%=marker.getPointName() %>"/></td>
+					</tr>
+					<tr>
+						<td><label>전화번호</label></td>
+						<td><input id="phone" value="<%=marker.getPhone() %>"/></td>
+					</tr>
+					<tr>
+						<td><label>주소</label></td>
+						<td><input id="address" value="<%=marker.getAddress() %>"/></td>
+					</tr>
+					<tr>
+						<td><a href="<%=marker.getUrlText()%>" id="urlData" target="_blank">사이트</a></td>
+						<td><input id="urlText" value="<%=marker.getUrlText()%>"/></td>
+						
+					</tr>
+					<tr>
+					<tr>	
+						<td><button id="sendbtn" class="btn btn-primary">수정</button></td>
+					</tr>
+				</table>
+			</form>
+		</div>
 	</div>
 	<div>
-		<form onsubmit="return false;">
-			<p>
-				<label>마커ID</label>
-				<input id="markerId" value="<%=marker.getmarkerId() %>" readOnly/>
-			</p>
-			<p>
-				<label>좌표 X</label>
-				<input id="pointX" value="<%=marker.getPointX() %>"/>
-			<p>
-				<label>좌표 Y</label>
-				<input id="pointY" value="<%=marker.getPointY() %>"/>
-			<p>
-				<label>카테고리</label>
-				<input id="category" value="<%=marker.getCategory() %>"/>
-			<p>
-				<label>장소명</label>
-				<input id="pointName" value="<%=marker.getPointName() %>"/>
-			<p>
-				<label>전화번호</label>
-				<input id="phone" value="<%=marker.getPhone() %>"/>
-			<p>
-				<label>주소</label>
-				<input id="address" value="<%=marker.getAddress() %>"/>
-			<p>
-				<label>정보보기</label>
-				<a href="#" id="urlData" target="_blank">정보보기</a>
-			<p>
-				
-			
-			<button id="sendbtn">전송</button>
-		</form>
+		
 	</div>
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ca31d06e7d0446fcb67025d7d71b84e6&libraries=services"></script>
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script>
+	//맵 변수
+	var mapContainer;
+	var map;
 	
 	// input 태그 
 	var id = document.querySelector("#markerId");
@@ -81,11 +110,14 @@
 	var pn = document.querySelector("#pointName");
 	var ph = document.querySelector("#phone");
 	var addr = document.querySelector("#address");
-	var urldata = document.querySelector("#urlData");
+	var urlText = document.querySelector("#urlText");
 	var desc = document.querySelector("#description");
 	var send = document.querySelector("#sendbtn");
 	var insertKeyword = document.querySelector("#keyword");
 
+	var editData = "<%=pointName%>";
+	var markerurl = "<%=marker.getUrlText()%>";
+	console.log(markerurl);
 	var saveKeyword;
 	// 마커를 담을 배열입니다
 	var markers = [];
@@ -102,14 +134,8 @@
 			"description":""
 	};
 	
-	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-	    mapOption = {
-	        center: new kakao.maps.LatLng(35.2538433, 128.6402609), // 지도의 중심좌표
-	        level: 3 // 지도의 확대 레벨
-	    };  
 
-	// 지도를 생성합니다    
-	var map = new kakao.maps.Map(mapContainer, mapOption); 
+	
 
 	// 장소 검색 객체를 생성합니다
 	var ps = new kakao.maps.services.Places();  
@@ -122,10 +148,41 @@
 //	var send = document.querySelector("#sendbtn");
 	send.addEventListener('click', updateData);
 	
-	//setInsertKey();
+	makeMap();
+	//	수정하려는 마커 찍기
+	setMarker();	
+	
 	// 키워드로 장소를 검색합니다
 	searchPlaces();
 
+	
+	// 지도 출력을 위한 기본적인 코드 -------- START
+	function makeMap(){
+		mapContainer = document.getElementById('map'); // 지도를 표시할 div 
+	    var mapOption = { 
+	        center: new kakao.maps.LatLng(35.2538433, 128.6402609), // 지도의 중심좌표
+	        level: 9 // 지도의 확대 레벨
+	    };
+
+		map = new kakao.maps.Map(mapContainer, mapOption); 
+	}
+	// 지도 출력을 위한 기본적인 코드 -------- END
+	//	처음 왔을 때 출력
+	function setMarker(){
+		var dtoObj ={
+				"markerId":"<%= marker.getmarkerId()%>",
+				"pointX":"<%= marker.getPointX()%>",
+				"pointY":"<%= marker.getPointY()%>",
+				"category":"<%= marker.getCategory()%>",
+				"pointName":"<%= marker.getPointName()%>",
+				"phone":"<%= marker.getPhone()%>",
+				"address":"<%= marker.getAddress()%>",
+				"urlText":"<%= marker.getUrlText()%>"
+		};
+		console.log(dtoObj);
+		addMarker(dtoObj);
+	}
+	
 	// 키워드 검색을 요청하는 함수입니다
 	function searchPlaces() {
 		
@@ -136,9 +193,9 @@
 	        return false;
 	    }
 	    
-	    dtoObj.inputdata = keyword;
+	    //dtoObj.inputdata = keyword;
 	    // 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
-	    ps.keywordSearch( keyword, placesSearchCB); 
+	    ps.keywordSearch(keyword, placesSearchCB); 
 	}
 
 	// 장소검색이 완료됐을 때 호출되는 콜백함수 입니다
@@ -172,10 +229,10 @@
 	function displayPlaces(places) {
 
 	    var listEl = document.getElementById('placesList'), 
-	    menuEl = document.getElementById('menu_wrap'),
-	    fragment = document.createDocumentFragment(), 
-	    bounds = new kakao.maps.LatLngBounds(), 
-	    listStr = '';
+		    menuEl = document.getElementById('menu_wrap'),
+		    fragment = document.createDocumentFragment(), 
+		    bounds = new kakao.maps.LatLngBounds(), 
+		    listStr = '';
 	    
 	    // 검색 결과 목록에 추가된 항목들을 제거합니다
 	    removeAllChildNods(listEl);
@@ -248,6 +305,20 @@
 	    menuEl.scrollTop = 0;
 
 	    // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
+	    map.setBounds(bounds);
+	}
+	
+	function addMarker(data){
+		var bounds = new kakao.maps.LatLngBounds(); 
+		var placePosition = new kakao.maps.LatLng(data.pointY, data.pointX);
+		//마커 생성 --- (원본)함수구현
+
+       	marker = new kakao.maps.Marker({
+            position: placePosition, // 마커의 위치
+        });
+		
+	    marker.setMap(map); // 지도 위에 마커를 표출합니다
+	    bounds.extend(placePosition);
 	    map.setBounds(bounds);
 	}
 
@@ -405,7 +476,7 @@
 		dtoObj.pointName = data.place_name;
 		dtoObj.phone = data.phone;
 		dtoObj.address = data.address_name;
-		dtoObj.description = data.place_url;
+		dtoObj.urlText = data.place_url;
 	}	
 	
 	function setDTObefore(){
@@ -417,7 +488,7 @@
 		dtoObj.pointName = pn.value;
 		dtoObj.phone = ph.value;
 		dtoObj.address = addr.value;
-		dtoObj.description = urldata.value;
+		dtoObj.urlText = urlText.value;
 	}	
 	
 	function updateData(event){

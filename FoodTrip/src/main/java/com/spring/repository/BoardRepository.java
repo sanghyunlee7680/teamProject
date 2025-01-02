@@ -17,6 +17,6 @@ public interface BoardRepository {
 
 	void addComment(Board board);
 	void updateComment(Board board);
-	void deleteComment(long commentId);
+	void deleteComment(long commentId, int admin);
 	List<Board> getCommentsByBoardId(long boardId);
 }

@@ -7,20 +7,26 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<!-- 
 <link rel="stylesheet" href="/FoodTrip/resources/css/menu.css?version=3"/>
 <link rel="stylesheet" href="/FoodTrip/resources/css/Marker.css?version=3"/>
+ -->
+
 <script src="https://kit.fontawesome.com/7676881a65.js" crossorigin="anonymous"></script>
+    <link href="/FoodTrip/resources/css/bootstrap.min.css?version=132" rel='stylesheet' type='text/css' /><!-- bootstrap css -->
+    <link href="/FoodTrip/resources/css/css_slider.css?version=131" rel='stylesheet' type='text/css' /><!-- custom css -->
+	<link href="/FoodTrip/resources/css/style.css?version=92" type="text/css" rel="stylesheet" media="all">
+    <script src="https://kit.fontawesome.com/08b7540d84.js" crossorigin="anonymous"></script><!-- fontawesome css -->
+	<!-- //css files -->
+	<title>Welcome to FoodTrip</title>
 <style>
 	
 </style>
 </head>
 <body>
-<div class="container">
-	<div class="menubar" id="mklistBack">
-		<%@ include file="../menu/menu.jsp" %>
-		<i class="fa-solid fa-location-dot" id="headIcon"></i>&nbsp;
-		<span class="headTitle mklistTitle">전체 마커 리스트</span>	
-	</div>
+<div class="navColorbg">
+	<%@ include file="../menu/menu.jsp" %>	
+</div>
 	<div class="description">
 		<p> * 서버에 저장된 전체 마커를 확인할 수 있습니다.
 		<p> * 카테고리 분류는 3가지입니다. (관광지 / 식당 / 숙소)
@@ -30,9 +36,9 @@
 	<div class="contentBody">
 		<div class="listBox">
 			<div class="tablist">
-				<button class="tourtab" id="TU">관광지</button>
-				<button class="resttab" id="RS">식당</button>
-				<button class="staytab" id="HT">숙소</button>
+				<button class="tourtab btn btn-outline-primary" id="TU" >관광지</button>
+				<button class="resttab btn btn-outline-dark" id="RS" >식당</button>
+				<button class="staytab btn btn-outline-success" id="HT" >숙소</button>
 			</div>	
 			<div class="listbody">
 				<div class="listblock">
@@ -48,7 +54,7 @@
 		</div> 
 	</div>
 	<%@ include file="../footer/footer.jsp" %>
-</div>		
+	
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ca31d06e7d0446fcb67025d7d71b84e6"></script>
 <script>
@@ -167,13 +173,27 @@
 	//리스트 만들기
 	function listMake(list, data){
 		//console.log(data.description);
+		var cateFull = data.category;
+		var str1 = cateFull.replaceAll('>', ',');
+		var str2 = str1.split(',');
+		var cateStr = str2[1].trim();
+		var styleId;
+		
+		if(cateStr === "관광"){
+			styleId = "category_tu";
+		}else if(cateStr === "숙박"){
+			styleId = "category_ht";
+		}else{
+			styleId = "category_rs";		
+		}
+			
 		list.innerHTML="<a href='"+data.urltext+"'class='pointName' target='_blank'>"
-		+ data.pointName + "</a><div class='category'>"+data.category
-		+"</div><br>"
+		+ data.pointName + "</a><div class='category' id='"+styleId+"'>"+cateStr
+		+"</div><div class='addr'>"+ data.address +"</div><br>";
 		//
 		var div = document.createElement('div');
 		div.setAttribute("class", "btnList");
-		div.innerHTML = "<a href='/FoodTrip/marker/markerUpdate?id="+data.markerId+"'>수정</a>";
+		div.innerHTML = "<div><a href='/FoodTrip/marker/markerUpdate?id="+data.markerId+"' id='edit'>수정</a></div><div><a href='/FoodTrip/marker/markerDelete?id='"+data.markerId+" id='delete'>삭제</a></div>";
 		
 		var hr = document.createElement('hr');
 /*		var btn = document.createElement('button');
@@ -323,7 +343,7 @@
 			positionY = viewdata.pointY;
 			if(cate=="RS"){
 				//위도 경도 조건 
-				var km = haversineDistance(x, y, positionX, positionY);
+				var km = haversineDistance(y, x, positionY, positionX);
 				if(km <= 0.69){
 				//	markersByCircle(marker, data, 0);
 				//	console.log("km :  "+km);

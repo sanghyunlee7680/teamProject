@@ -60,8 +60,7 @@ li {
 }
 p {
     margin: 0;
-    font-size: 17px;
-    line-height: 2em;
+    
     letter-spacing: 1px;
     color: #707579;
 	font-family: 'Open Sans', sans-serif;
@@ -123,7 +122,6 @@ h6 {
 
 p {
     margin: 0;
-    line-height: 2em;
     letter-spacing: 1px;
 }
 
@@ -134,10 +132,22 @@ ul {
 }
 /*-- header --*/
 header {
-    position: absolute;
     width: 100%;
     padding: 15px 0;
 	z-index: 9;
+}
+.navBg{
+	width: 100%;
+    padding: 15px 0;
+	z-index: 9;
+	position:absolute;	
+}
+.navColorbg{
+	background-color:#2D2F36;	
+}
+#menublock{
+	line-height:50px;
+	
 }
 .right-p li ,.right-p li  a{
     display: inline-block;
@@ -154,6 +164,337 @@ header {
 [id^=drop] {
 	display: none;
 }
+/***************************************
+
+         MEMBER CSS
+
+****************************************/
+
+.homeLogo{
+   position : absolute;
+   top:100px;
+   left:900px;
+}
+
+.page{
+  background:#2e2e6b;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: absolute;
+  place-content: center;
+  width:100%;
+}
+
+.loginForm{
+   display : flex;
+   justify-content : center;
+   align-items : center;
+}
+/* 폼 박스 제공 */
+.loginBox{
+   border:none;
+   position:absolute;
+   top:230px;
+   left: 750px;
+   width : 370px;
+   border-radius : 25px;
+   padding : 50px;
+   margin : 20px;
+   box-shadow: 10px 10px 10px 10px gray;
+   background-color : white;
+}
+
+.loginBox_add{
+   border:none;
+   position:absolute;
+   top:160px;
+   left: 750px;
+   width : 370px;
+   border-radius : 25px;
+   padding : 50px;
+   margin : 20px;
+   box-shadow: 10px 10px 10px 10px gray;
+   background-color : white;
+}
+
+/* 로그인 배너 */
+.login{
+   padding : 10px;
+}
+
+/* 배너 글자 크기 및 위치 조정*/
+.login > h3 {   
+   text-align : center;
+   font-family: "Dongle", serif;
+     font-weight: 400;
+     font-style: normal;
+     font-size:30px;
+}
+/* 테이블 크기 및 정렬 */
+.tablebox{
+   width : 100%;
+   text-align : left;
+   padding : 10px;
+}
+/* 이메일 텍스트 박스 */
+.inputBox{
+   width : 100px;
+   height : 50px;
+   font-size:17px;
+   border-radius : 5px;
+   border-color : gray;
+}
+
+.inputBox2{
+   width : 120px;
+   height : 50px;
+   font-size:17px;
+   border-radius : 5px;
+   border-color : gray;
+}
+
+th{
+   padding-top:5px;
+   padding-bottom:5px;
+}
+
+/* 패스워드 텍스트 박스 */
+.inputBox_pw{
+   width : 247px;
+   height : 50px;
+   font-size:17px;
+   border-radius : 5px;
+   border-color : gray;
+}
+
+.inputBox_pw:hover{
+   transform:scale(1.1);
+   transition: transform .2s; 
+}
+
+/* 로그인 에러 */
+.loginError{
+   text-align : center;
+   color : red;
+   padding-bottom : 5px;
+}
+
+/* 로그인 버튼 */
+.submitBtn{
+   width : 247px;
+   padding-top : 10px;
+   padding-bottom : 10px;
+   border-radius : 10px;
+   border:none;
+   background-color : skyblue;
+   color : white;
+   text-align : center;
+   font-weight : bold;
+   font-size : 20px;
+   cursor: pointer;
+}
+
+/* 회원가입 버튼 */
+.addBtn {
+   text-align : center;
+   width : 247px;
+   padding-top : 10px;
+   padding-bottom : 10px;
+   border-radius : 10px;
+   background-color : greenyellow;
+   font-weight : bold;
+   font-size : 20px;
+   cursor : pointer;
+   color : white;
+}
+/* 회원가입 a 태그 */
+.addBtn > a {
+   color : white;
+}
+/* 버튼 div */
+.btnBox{
+   padding-top : 5px;
+   padding-bottom : 5px;
+}
+
+/* 중복 확인 버튼 */
+#checkBtn{
+   text-align : center;
+   width : 123px;
+   padding-top : 5px;
+   padding-bottom : 5px;
+   margin-top : 10px;
+   border-radius : 10px;
+   background-color : gray;
+   font-weight : bold;
+   font-size : 20px;
+   cursor : pointer;
+   color : white;
+}
+
+/* 삭제 버튼 */
+#deleteBtn{
+   color:gray;
+}
+
+/* 삭제 버튼 호버 */
+#deleteBtn:hover{
+   color:red;
+   transition:1s;
+}
+
+/* 업데이트뷰 폰트 */ 
+.updfont{
+   font-family: "Dongle", serif;
+     font-weight: 400;
+     font-style: normal;
+}
+
+/* 회원탈퇴 버튼 위치 조정 */
+.delbox{
+   width:247px;
+   text-align:right;
+}
+
+/* 삭제 버튼 */
+.delete-btn {
+    color: white;
+    background-color: #f44336;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 3px;
+    font-size: 14px;
+    font-family: "Noto Serif KR", serif;
+     font-optical-sizing: auto;
+     font-weight: bold;
+     font-style: normal;
+}
+
+.delete-btn:hover {
+    background-color: #d32f2f;
+    transition: 0.3s;
+    color:#73685d;
+}
+
+/* 페이지네이션 */
+.pagination_member {
+    text-align: center;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.page-link {
+    margin: 0 5px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+.page-link.active {
+    color: white;
+    background-color: #73685d;
+    padding: 5px 10px;
+    border-radius: 3px;
+}
+
+/* 정렬 버튼 */
+.sort-options {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.sort-btn {
+    display: inline-block;
+    margin: 0 10px;
+    text-decoration: none;
+    padding: 5px 15px;
+    border: 1px solid #73685d;
+    border-radius: 5px;
+    color: #73685d;
+      font-family: "Dongle", serif;
+     font-weight: 400;
+     font-style: normal;
+}
+
+.sort-btn.active {
+    background-color: #73685d;
+    color: white;
+    font-weight: bold;
+}
+
+.sort-btn:hover {
+    background-color: #73685d;
+    color: white;
+    transition: 0.3s;
+    font-weight: bold;
+}  
+
+/****************************************
+
+				Map CSS
+ 
+ ****************************************/
+.mapContainer{width:100%;height:1000px;}
+.map_wrap{margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;border-radius:30px; overflow:hidden;}
+	.map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
+.map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#000;text-decoration: none;}
+.map_wrap {position:relative;width:100%;height:1000px;}
+#menu_wrap {position:absolute;top:0;left:0;bottom:0;width:250px;margin:10px 0 30px 10px;padding:5px;overflow-y:auto;background:rgba(255, 255, 255, 0.7);z-index: 1;font-size:12px;border-radius: 10px;}
+.bg_white {background:#fff;}
+#menu_wrap hr {display: block; height: 1px;border: 0; border-top: 2px solid #5F5F5F;margin:3px 0;}
+#menu_wrap .option{text-align: center;}
+#menu_wrap .option p {margin:10px 0;}  
+#menu_wrap .option button {margin-left:5px;}
+#placesList li {list-style: none;}
+#placesList .item {position:relative;border-bottom:1px solid #888;overflow: hidden;cursor: pointer;min-height: 65px;}
+#placesList .item span {display: block;margin-top:4px;}
+#placesList .item h5, #placesList .item .info {text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
+#placesList .item .info{padding:10px 0 10px 55px;}
+#placesList .info .gray {color:#8a8a8a;}
+#placesList .info .jibun {padding-left:26px;background:url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_jibun.png) no-repeat;}
+#placesList .info .tel {color:#009900;}
+#placesList .item .markerbg {float:left;position:absolute;width:36px; height:37px;margin:10px 0 0 10px;background:url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png) no-repeat;}
+#placesList .item .marker_1 {background-position: 0 -10px;}
+#placesList .item .marker_2 {background-position: 0 -56px;}
+#placesList .item .marker_3 {background-position: 0 -102px}
+#placesList .item .marker_4 {background-position: 0 -148px;}
+#placesList .item .marker_5 {background-position: 0 -194px;}
+#placesList .item .marker_6 {background-position: 0 -240px;}
+#placesList .item .marker_7 {background-position: 0 -286px;}
+#placesList .item .marker_8 {background-position: 0 -332px;}
+#placesList .item .marker_9 {background-position: 0 -378px;}
+#placesList .item .marker_10 {background-position: 0 -423px;}
+#placesList .item .marker_11 {background-position: 0 -470px;}
+#placesList .item .marker_12 {background-position: 0 -516px;}
+#placesList .item .marker_13 {background-position: 0 -562px;}
+#placesList .item .marker_14 {background-position: 0 -608px;}
+#placesList .item .marker_15 {background-position: 0 -654px;}
+#pagination {margin:10px auto;text-align: center;}
+#pagination a {display:inline-block;margin-right:10px;}
+#pagination .on {font-weight: bold; cursor: default;color:#777;}
+.wrap {position: absolute;left: 0;bottom: 40px;width: 288px;height: 132px;margin-left: -144px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
+.wrap * {padding: 0;margin: 0;}
+.wrap .info {width: 286px;height: 120px;border-radius: 5px;border-bottom: 2px solid #ccc;border-right: 1px solid #ccc;overflow: hidden;background: #fff;}
+.wrap .info:nth-child(1) {border: 0;box-shadow: 0px 1px 2px #888;}
+.info .title {padding: 5px 0 0 10px;height: 30px;background: #eee;border-bottom: 1px solid #ddd;font-size: 18px;font-weight: bold;}
+.info .close {position: absolute;top: 10px;right: 10px;color: #888;width: 17px;height: 17px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');}
+.info .close:hover {cursor: pointer;}
+.info .body {position: relative;overflow: hidden;}
+.info .desc {position: relative;margin: 13px 0 0 90px;height: 75px;}
+.desc .ellipsis {overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+.desc .jibun {font-size: 11px;color: #888;margin-top: -2px;}
+.info .img {position: absolute;top: 6px;left: 5px;width: 73px;height: 71px;border: 1px solid #ddd;color: #888;overflow: hidden;}
+.info:after {content: '';position: absolute;margin-left: -12px;left: 50%;bottom: 0;width: 22px;height: 12px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
+.info .link {color: #5085BB;}
+
+.mapBox{
+		width:70%;
+		border-radius:20px;
+		overflow:hidden;
+		
+	}
 
 /* Giving a background-color to the nav container. */
 nav { 
@@ -177,14 +518,126 @@ span.fa.fa-free-code-camp {
     font-weight: bold;
 }
 
+
 /* Since we'll have the "ul li" "float:left"
  * we need to add a clear after the container. */
-
-nav:after {
-	content:"";
-	display:table;
-	clear:both;
+/*  Road Read All CSS */
+.roadMakeContainer{
+	display:flex;
+	justify-content:space-between;
+	align-items:center;
 }
+.courseBody{
+    	
+    	padding:0;
+    	width:25%;
+    }
+
+.tabcontainer{
+		width:100%;
+    	display:flex;
+    	justify-content:center;
+
+    }
+    .tabBody{
+    	width:100%;
+    	display:flex;
+    	justify-content:center;
+    }
+    .tabBody span{
+    	
+    	width: 100px;
+    	height:50px;
+    	line-height:50px;
+    	text-align:center;
+    	position:relative;
+    	border:1px solid rgba(0,0,0,0.3);
+   		font-family: "Dongle", serif;
+  		font-weight: 400;
+  		font-style: normal;
+    }
+    .tabBody #disert{
+    	width:150px;
+    }
+     .tabBody span img{
+    	width:50px;
+    	opacity:0.2;
+    	position:absolute;
+    	top:0;
+    	left:6px;
+    }
+    
+   	.tabBody span img:hover{
+    	opacity:1;
+    }
+    .tabBody #disert img{
+    	left:25px;
+    }
+    .pointTitle{
+    	font-size:18px;
+    	font-weight:700;
+    }
+    .pointCate{
+    	font-size:12px;
+    }
+    
+    
+    .contentBody{
+		width:100%;
+		display:flex;
+	}
+	.inputForm{
+		position:absolute;	
+		right:0;
+		top:0;
+		width:250px;
+		margin:10px 0 30px 10px;
+		padding:5px;
+		overflow-y:auto;
+		background:rgba(255, 255, 255, 0.9);
+		z-index: 1;
+		font-size:12px;
+		border-radius: 10px;
+		border:1px solid rgba(0,0,0,0.3);
+	}
+	#sendData, #resetData{
+		width:50px;
+		height:30px;
+	}
+    .courseList {
+	    align-items: center;
+	    margin: 10px 0;
+	    padding: 10px;
+	    border-radius: 8px;
+	    font-size: 14px;
+	    color: #333;
+	    flex-wrap: wrap;
+	}
+	
+	.courseList span {
+	    display: flex;
+	    align-items: center;
+	    font-size: 14px;
+	    font-weight: bold;
+	    color: #495057;
+	}
+
+	.courseList span i {
+	    margin: 0 5px;
+	    color: #007bff;
+	}
+	
+	.courseList span:last-child i {
+	    display: none;
+	}
+    #cslist{
+    	list-style:none;
+    }
+    #choice{
+    	height:35px;
+    	width:55px;
+    }
+    
 
 /* Removing padding, margin and "list-style" from the "ul",
  * and adding "position:reltive" */
@@ -223,45 +676,6 @@ nav a:hover {
 }
 .menu li.active  a{ 
 	color: #fff;
-}
-
-/* Hide Dropdowns by Default
- * and giving it a position of absolute */
-nav ul ul {
-	display: none;
-	position: absolute; 
-	/* has to be the same number as the "line-height" of "nav a" */
-	top: 30px; 
-    background: #fff;
-    padding: 10px;
-}
-	
-/* Display Dropdowns on Hover */
-nav ul li:hover > ul {
-	display:inherit;
-}
-	
-/* Fisrt Tier Dropdown */
-nav ul ul li {
-	width:170px;
-	float:none;
-	display:list-item;
-	position: relative;
-}
-nav ul ul li a {
-    color: #333;
-    padding: 5px 10px;
-    display: block;
-}
-/* Second, Third and more Tiers	
- * We move the 2nd and 3rd etc tier dropdowns to the left
- * by the amount of the width of the first tier.
-*/
-nav ul ul ul li {
-	position: relative;
-	top:-60px;
-	/* has to be the same number as the "width" of "nav ul ul li" */ 
-	left:170px; 
 }
 
 /* Change ' +' in order to change the Dropdown symbol */
@@ -436,7 +850,7 @@ li > a:only-child:after { content: ''; }
     -o-background-size: cover;
     -ms-background-size: cover;
     background-size: cover;
-    height : 953px;
+    height : 1050px;
     width : 1920px;
 }
 
@@ -450,7 +864,7 @@ li > a:only-child:after { content: ''; }
     font-size: 15px;
 }
 .banner-text-w3ls {
-    padding: 15vw 0 18vw;
+    padding: 23vw 0 18vw;
     box-sizing: border-box;
 }
 .banner-form-w3 {
@@ -506,7 +920,7 @@ h4.b-w3ltxt {
     margin-left: 5px;
 }
 
-.form-style-w3layout input[type="text"], .form-style-w3layout input[type="email"], .form-style-w3layout input[type="password"],select {
+.form-style-w3layout input[type="text"], .form-style-w3layout input[type="email"], .form-style-w3layout input[type="password"] {
     outline: none;
     font-size: 14px;
     border: none;
@@ -1124,6 +1538,10 @@ h4.destination {
 
 .team-info span{
     margin-top: .5em;
+    
+    
+    
+    
     font-size: .8em;
     text-transform: uppercase;
     color: #ffffffbd;
@@ -1195,16 +1613,185 @@ button.sent-butnn {
     letter-spacing: 1px;
     font-weight: 600;
 }
-.map iframe {
-    border: none;
-    outline: none;
-    height: 350px;
-    width: 100%;
+
+
+/* 드롭다운 시작 */
+.dropdown { 
+	  display: inline-block;
+	  text-align: center;	
+	  position:relative;
 }
+/* 드롭다운 서브박스 */
+.dropSub{
+	width: 200px;
+	position:absolute;
+	top:40px;
+	right:-60px;
+	height:0;
+  	overflow:hidden;
+  	background-color:white;
+  }
+
+.dropdown a:hover{
+	color : orange;
+  	translate:1s;
+}
+
+.dropSub a {
+	margin: 0;
+	display:none;
+	text-align:center;
+	width:100%;
+	padding:0;
+}
+.dropSub a:hover { 
+	
+	transition:1s;
+	color:black !important;
+	background-color:white;
+}
+
+
+.dropdown:hover .dropSub { 
+	z-index:1000;
+	height: 200px;
+	/*opacity:0.9;*/
+	background-color: black;
+	transition:1s;
+	box-shadow: 10px 10px 10px 10px rgba(0,0,0,0.3);
+}
+
+.dropdown:hover .dropSub a{
+	display:block;
+}
+
+
+
+/****************************************
+
+				Marker CSS
+ 
+ ****************************************/
+.description{
+		margin-top:70px;
+		color:gray;
+		font-size:12px;
+	}
+.countRow{
+		font-size:12px;
+		color:gray;
+	}
+	
+	
+.listBox, .mylistBox{
+		border:1px solid rgba(0,0,0,0.3);
+		width:250px;
+		height:800px;
+		position: relative;
+		overflow:hidden;
+		
+	}
+	.listBox > *, ul{
+		padding:0;
+		margin:0 auto;
+	}
+	.listbody{
+		
+		height:95%;
+		position:relative;
+		overflow-y:auto;
+	}
+	.pointName{
+		text-decoration: none;
+		color:#0B0B3B;
+		font-weight:700;
+	}
+	.pointName:hover{
+		color:#0000FF;
+	}
+	
+	.tablist{
+		list-style:none;
+		display:flex;
+		justify-content:space-between;
+		padding:3px;
+	}
+	.tablist button{
+		font-size:15px;
+		
+	}
+	.tablist div{
+		width:30%;
+		margin:0 10px 0 10px;
+		border:1px solid rgba(0,0,0,0.3);
+	}
+	.markerList{
+		display:flex;
+		flex-direction:column;
+		list-style : none;
+	}	
+	.category, .addr{
+		font-size:11px;
+	}
+	#category_tu{
+		background-color:lightblue;
+		border-radius:10px;
+		color:white;
+		width:30px;
+		text-align:center;
+	}
+	#category_rs{
+		background-color:orange;
+		border-radius:10px;
+		color:white;
+		width:30px;
+		text-align:center;
+	}
+	#category_ht{
+		background-color:#0B3B24;
+		border-radius:10px;
+		color:white;
+		width:30px;
+		text-align:center;
+	}
+	.btnList{
+		display:flex; 
+		justify-content:space-between;
+	}
+	.btnList #edit{
+		color:white;
+		text-align:center;
+		text-decoration:none;
+		background-color:#0174DF;
+		padding:3px;
+		border-radius:5px;
+	}
+	.btnList #delete{
+		color:white;
+		text-align:center;
+		text-decoration:none;
+		background-color:#FF0000;
+		padding:3px;
+		border-radius:5px;
+	}
+	.listCh{
+		width:80%;
+		margin-top: 10px;
+		margin-left: 20px;
+		margin-bottom: 10px;
+	}
 /*-- contact --*/
 
 /*-- footer --*/
 
+    .footer{
+		margin:100px 0 50px 0;		
+	}
+	.footer a{
+		color:gray;
+		font-size:14px;
+	}
+	
 .footer-content {
    background: #011144;
 }
@@ -1564,7 +2151,7 @@ h3.heading {
 	.padding {
     padding: 1em;
 }
-.form-style-w3layout input[type="text"], .form-style-w3layout input[type="email"], .form-style-w3layout input[type="password"], select {
+.form-style-w3layout input[type="text"], .form-style-w3layout input[type="email"], .form-style-w3layout input[type="password"] {
     width: 100%;
 }
 .read-more-button {
@@ -1629,3 +2216,4 @@ h3.heading {
 }
 }
 /*-- //Responsive design --*/
+}

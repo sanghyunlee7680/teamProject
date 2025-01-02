@@ -231,10 +231,10 @@ public class BoardController {
 	
 	// 댓글 삭제 : Delete
 	@ResponseBody
-	@DeleteMapping("/comment/{id}")
-	public String deleteComment(@PathVariable("id") long commentId) {
+	@DeleteMapping("/comment/{id}/{admin}")
+	public String deleteComment(@PathVariable("id") long commentId, @PathVariable("admin")int admin) {
 		System.out.println("deleteComment() 실행 : 댓글삭제");
-		boardService.deleteComment(commentId);
+		boardService.deleteComment(commentId, admin);
 		return "success";
 	}
 	

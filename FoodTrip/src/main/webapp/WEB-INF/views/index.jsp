@@ -3,19 +3,22 @@
 <%@ page import="com.spring.domain.Member" %>
 <html>
 <head>
-	<!-- css files -->
-	<link rel="stylesheet" href="/FoodTrip/resources/css/menu.css?version=132"/>
+	<!-- css files 
+	<link rel="stylesheet" href="/FoodTrip/resources/css/menu.css?version=132"/>-->
     <link href="/FoodTrip/resources/css/bootstrap.min.css?version=132" rel='stylesheet' type='text/css' /><!-- bootstrap css -->
     <link href="/FoodTrip/resources/css/css_slider.css?version=131" rel='stylesheet' type='text/css' /><!-- custom css -->
 	<link href="/FoodTrip/resources/css/style.css?version=92" type="text/css" rel="stylesheet" media="all">
     <script src="https://kit.fontawesome.com/08b7540d84.js" crossorigin="anonymous"></script><!-- fontawesome css -->
 	<!-- //css files -->
+	<title>Welcome to FoodTrip</title>
 </head>
 <body>
 	<!-- header -->
+<div class="navBg">
 	<%@ include file="./menu/menu.jsp" %>
+</div>
 	<%
-		System.out.println("칭호? : " + sessionId.getBadgeName());
+		//System.out.println("칭호? : " + sessionId.getBadgeName());
 	%>
 	<!-- //header -->
 	<!-- banner -->
@@ -35,7 +38,7 @@
 								<li>
 									<div class="container-fluid">
 											<div class="w3ls_banner_txt">
-											<h3 class="b-w3ltxt text-capitalize mt-md-4">푸드트립</h3>
+											<h3 class="b-w3ltxt text-capitalize">푸드트립</h3>
 											<h4><span class="fa fa-bowl-food" aria-hidden="true"></span>중식로드</h4>
 										<p><a href="/FoodTrip/road/readRoad?foodCategory=chinese" ><span class="fa fa-play" aria-hidden="true" style="color:orange"></span>시작하기</a><p>
 										</div>
@@ -44,7 +47,7 @@
 								<li>
 									<div class="container-fluid">
 										<div class="w3ls_banner_txt">
-											<h3 class="b-w3ltxt text-capitalize mt-md-4">푸드트립</h3>
+											<h3 class="b-w3ltxt text-capitalize">푸드트립</h3>
 											<h4><span class="fa fa-burger" aria-hidden="true"></span>양식로드</h4>
 										<p><a href="/FoodTrip/road/readRoad?foodCategory=pasta"><span class="fa fa-play" aria-hidden="true" style="color:orange"></span>시작하기</a><p>	
 										</div>
@@ -53,7 +56,7 @@
 								<li>
 									<div class="container-fluid">
 										<div class="w3ls_banner_txt">
-											<h3 class="b-w3ltxt text-capitalize mt-md-4">푸드트립</h3>
+											<h3 class="b-w3ltxt text-capitalize">푸드트립</h3>
 											<h4><span class="fa fa-drumstick-bite" aria-hidden="true"></span>치킨로드</h4>
 											<p><a href="/FoodTrip/road/readRoadfoodCategory=chicken"><span class="fa fa-play" aria-hidden="true" style="color:orange"></span>시작하기</a><p>
 										</div>
@@ -62,7 +65,7 @@
 								<li>
 									<div class="container-fluid">
 										<div class="w3ls_banner_txt">
-											<h3 class="b-w3ltxt text-capitalize mt-md-4">푸드트립</h3>
+											<h3 class="b-w3ltxt text-capitalize">푸드트립</h3>
 											<h4><span class="fa fa-cookie-bite" aria-hidden="true"></span>스낵로드</h4>
 											<p><a href="/FoodTrip/road/readRoadfoodCategory=snack"><span class="fa fa-play" aria-hidden="true" style="color:orange"></span>시작하기</a><p>
 										</div>
@@ -71,7 +74,7 @@
 								<li>
 									<div class="container-fluid">
 										<div class="w3ls_banner_txt">
-											<h3 class="b-w3ltxt text-capitalize mt-md-4">푸드트립</h3>
+											<h3 class="b-w3ltxt text-capitalize">푸드트립</h3>
 											<h4><span class="fa fa-martini-glass-citrus" aria-hidden="true"></span>디저트로드</h4>
 											<p><a href="/FoodTrip/road/readRoadfoodCategory=disert"><span class="fa fa-play" aria-hidden="true" style="color:orange"></span>시작하기</a><p>
 										</div>
@@ -90,12 +93,13 @@
 						</div>
 						<!-- //banner slider-->		
 					</div>
-					<div class="col-md-6 px-lg-3 px-0">
-						<div class="banner-form-w3 ml-lg-5">
+					<div class="col-md-6 banner-text-w3ls">
+						<div class="container-fluid ml-lg-5">
 							<div class="padding">
 								<%if(sessionId==null){ %>
 								<form action="#" method="post">
-									<h5 class="mb-3">Choose Road and go on a food trip!!</h5>
+									<!-- <h5 class="mb-3">Choose Road and go on a food trip!!</h5> -->
+									<h5 class="mb-3">go on a food trip!!</h5>
 									<div class="form-style-w3layout">
 										<button class="btn" type="button" id="loginbtn">로그인하기</button>
 										&nbsp;

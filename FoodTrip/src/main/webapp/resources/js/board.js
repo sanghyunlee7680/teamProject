@@ -71,9 +71,11 @@ $(document).on('click', '.saveEdit', function () {
 // 댓글 삭제
 $('.deleteComment').click(function () {
     const commentId = $(this).data('id');
+	const admin = $(this).data('admin');
+	console.log("admin : " + admin);
     if (confirm('삭제하시겠습니까?')) {
         $.ajax({
-            url: `comment/${commentId}`,
+            url: `comment/${commentId}/${admin}`,
             method: 'DELETE',
             success: function () {
                 // 해당 댓글을 삭제된 메시지로 변경

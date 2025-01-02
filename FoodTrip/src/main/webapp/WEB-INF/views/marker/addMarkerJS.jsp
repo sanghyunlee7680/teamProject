@@ -5,23 +5,32 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<!-- css files 
+	<link rel="stylesheet" href="/FoodTrip/resources/css/menu.css?version=132"/>-->
+    <link href="/FoodTrip/resources/css/bootstrap.min.css?version=132" rel='stylesheet' type='text/css' /><!-- bootstrap css -->
+    <link href="/FoodTrip/resources/css/css_slider.css?version=131" rel='stylesheet' type='text/css' /><!-- custom css -->
+	<link href="/FoodTrip/resources/css/style.css?version=92" type="text/css" rel="stylesheet" media="all">
+    <script src="https://kit.fontawesome.com/08b7540d84.js" crossorigin="anonymous"></script><!-- fontawesome css -->
+	<!-- //css files -->
+	<title>Add Marker</title>
+<!-- 
 <link rel="stylesheet" href="/FoodTrip/resources/css/menu.css?version=4"/>
 <link rel="stylesheet" href="/FoodTrip/resources/css/Marker.css?version=6"/>
+ -->
 <script src="https://kit.fontawesome.com/7676881a65.js" crossorigin="anonymous"></script>
 </head>
 <body>
-	<div class="container">	
-		<div class="menubar">
-			<%@ include file="../menu/menu.jsp" %>
-			<i class="fa-solid fa-location-dot" id="headIcon"></i>&nbsp; <span class="headTitle addmTitle">마커 생성</span>
-		</div>
+<div class="navColorbg">
+	<%@ include file="../menu/menu.jsp" %>	
+</div>
 		<div class="description">
 			<p> * 마커 등록은 키워드 검색 시 목록에 출력되는 한 페이지(15개)가 배열로 저장됩니다.
-			<p> * 한 페이지 당 15개, 총 3페이지가 제공되며 페이지를 넘길 때마다 저장되므로 따로 저장하지 않아도 됩니다. 
+			<p> * 한 페이지 당 15개, 총 3페이지가 제공되며 페이지를 넘길 때마다 전송 배열에 저장되므로 따로 저장하지 않아도 됩니다. 
+			<p> * 검색을 실수하여 잘못된 키워드로 검색했다면 반드시 '비우기' 버튼을 눌러 배열을 비워주세요.
 			<p> * 넣으려는 마커를 검색 후 등록 버튼을 누르면 등록된 마커가 하나씩 서버로 저장되게 됩니다. 이 때 다른 동작을 하시면 오류가 날 수 있습니다.
 		</div>
-		<div class="contentBody">
+
+	<div class="contentBody">
 			<div class="map_wrap">
 				
 			    <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
@@ -39,54 +48,56 @@
 			        <ul id="placesList"></ul>
 			        <div id="pagination"></div>
 			    </div>
+			    <div class="inputForm">
+					<form onsubmit="return false;">
+						<table>
+							<tr>
+								<td><label>마커ID</label></td>
+								<td colspan="3"><input id="markerId"/></td>
+							</tr>
+							<tr>
+								<td><label>좌표 X</label></td>
+								<td><input id="pointX"/></td>
+							</tr>
+							<tr>
+								<td><label>좌표 Y</label></td>
+								<td><input id="pointY"/></td>
+							</tr>
+							<tr>
+								<td><label>카테고리</label></td>
+								<td><input id="category"/></td>
+							</tr>
+							<tr>
+								<td><label>장소명</label></td>
+								<td><input id="pointName"/></td>
+							</tr>
+							<tr>
+								<td><label>전화번호</label></td>
+								<td><input id="phone"/></td>
+							</tr>
+							<tr>
+								<td><label>주소</label></td>
+								<td><input id="address"/></td>
+							</tr>
+							<tr>
+								<td><label>URL</label></td>
+								<td><input id="urlText"/><a href="#" id="urlLink" target="_blank"><i class="fa-solid fa-link"></i></a></td>
+							</tr>
+							<tr>
+								<td><button id="sendData" class="btn btn-primary">전송</button></td>
+								<td><button id="resetData" class="btn btn-danger">비우기</button><span class="countRow">현재 <span class="count"></span>개 저장 중</span></td>
+							</tr>
+							<tr >
+								<td></td>						
+							</tr>
+						</table>
+					</form>
+				</div>
 			</div>
-			<div class="inputForm">
-				<form onsubmit="return false;">
-					<table>
-						<tr>
-							<td><label>마커ID</label></td>
-							<td><input id="markerId"/></td>
-						</tr>
-						<tr>
-							<td><label>좌표 X</label></td>
-							<td><input id="pointX"/></td>
-						</tr>
-						<tr>
-							<td><label>좌표 Y</label></td>
-							<td><input id="pointY"/></td>
-						</tr>
-						<tr>
-							<td><label>카테고리</label></td>
-							<td><input id="category"/></td>
-						</tr>
-						<tr>
-							<td><label>장소명</label></td>
-							<td><input id="pointName"/></td>
-						</tr>
-						<tr>
-							<td><label>전화번호</label></td>
-							<td><input id="phone"/></td>
-						</tr>
-						<tr>
-							<td><label>주소</label></td>
-							<td><input id="address"/></td>
-						</tr>
-						<tr>
-							<td><label>URL</label></td>
-							<td><input id="urlText"/><a href="#" id="urlLink" target="_blank"><i class="fa-solid fa-link"></i></a></td>
-						</tr>
-						<tr>
-							<td><button id="sendData">전송</button></td>
-						</tr>
-						<tr class="countRow">
-							<td>현재 <span class="count"></span>개 저장 중</td>						
-						</tr>
-					</table>
-				</form>
-			</div>
+			
 		</div>
 		<%@ include file="../footer/footer.jsp" %>
-	</div>
+
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ca31d06e7d0446fcb67025d7d71b84e6&libraries=services"></script>
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script>
@@ -104,6 +115,7 @@
 	var countView = document.querySelector(".count");
 	
 	var send = document.querySelector("#sendData");
+	var reset = document.querySelector("#resetData");
 	var insertKeyword = document.querySelector("#keyword");
 	var saveKeyword;
 	var overlays = [];
@@ -148,7 +160,7 @@
 	
 	//이벤트 할당
 	send.addEventListener('click', sendAllData);
-
+	reset.addEventListener('click', resetArray);
 	//setInsertKey();
 	// 키워드로 장소를 검색합니다
 	searchPlaces();
@@ -321,29 +333,6 @@
 	    return el;
 	}
 
-	// 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
-	// 원래 함수로 사용하고 있었으나 현재는 밖으로 꺼내 사용하지 않고 있음
-/*	
-	function addMarker(position, idx, title) {
-	    var imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
-	        imageSize = new kakao.maps.Size(36, 37),  // 마커 이미지의 크기
-	        imgOptions =  {
-	            spriteSize : new kakao.maps.Size(36, 691), // 스프라이트 이미지의 크기
-	            spriteOrigin : new kakao.maps.Point(0, (idx*46)+10), // 스프라이트 이미지 중 사용할 영역의 좌상단 좌표
-	            offset: new kakao.maps.Point(13, 37) // 마커 좌표에 일치시킬 이미지 내에서의 좌표
-	        },
-	        markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imgOptions),
-	            marker = new kakao.maps.Marker({
-	            position: position, // 마커의 위치
-	            image: markerImage 
-	        });
-
-	    marker.setMap(map); // 지도 위에 마커를 표출합니다
-	    markers.push(marker);  // 배열에 생성된 마커를 추가합니다
-
-	    return marker;
-	}
-*/
 	// 지도 위에 표시되고 있는 마커를 모두 제거합니다
 	function removeMarker() {
 	    for ( var i = 0; i < markers.length; i++ ) {
@@ -409,10 +398,15 @@
 	    	cate.value = data.category_name;
 	    	urlText.href = data.place_url;
 	    	urlLink.href = data.place_url;
-	    	setDTO(data);
 	     };
 	}
-	 
+	
+	function resetArray(){
+		dtoObjAry.length = 0;
+		dtoObjAry = [];
+		countView.innerHTML = dtoObjAry.length;
+	}
+	
 	function setInputValue(marker, data){
 		/*
 		Document data 
@@ -440,7 +434,7 @@
 			ph.value = data.phone;
 			cate.value = data.category_name;
 			urlText.value = data.place_url;
-			urlLint.href = data.place_url;
+			urlLink.href = data.place_url;
 			//setDTO(data);
 		});
 	}

@@ -114,9 +114,14 @@ public class BoardRepositoryImpl implements BoardRepository{
     }
 
     // 댓글/대댓글 삭제
-    public void deleteComment(long commentId) {
+    public void deleteComment(long commentId, int admin) {
     	System.out.println("deleteComment() 실행 : 댓글/대댓글 삭제하기");
-        String SQL = "UPDATE board SET content='삭제된 메시지입니다' WHERE brdNum=?";
+    	String SQL=null;
+    	if(admin==1) {
+    		SQL = "UPDATE board SET content='관리자에 의해 삭제된 메시지입니다' WHERE brdNum=?";
+    	} else if (admin==2){
+    		SQL = "UPDATE board SET content='삭제된 메시지입니다' WHERE brdNum=?";    		    		
+    	}
         template.update(SQL, commentId);
     }
     // 댓글 조회 메서드
